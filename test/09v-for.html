@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Demo</title>
 
+    <link rel="stylesheet"  type="text/css" href="../bootstrap.min.css">
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </head>
 <body>
 <div id="app">
-
     <!--v-for遍历普通数组-->
     <p v-for="item in list">{{item}}</p>
     <!--遍历数组时如果想要下标，将参数用括号包起来，第二个参数代表下标-->
@@ -28,9 +28,10 @@
     <!--v-for还可以迭代数字，从1开始-->
     <p v-for="count in 5">{{ count }}</p>
 
-    <!--2.2.0+版本后，**在组件中**使用v-for，key是必须的-->
-
-
+    <!--2.2.0+版本后，**在组件中**使用v-for，key是必须的，-->
+    <p v-for="u in user" :key="u">{{ u }}</p>
+    <!--key只能是number或string （新版本可能支持使用对象）-->
+    <p v-for="l in list2" :key="l.id">{{ l.name }}</p>
 
 </div>
 
@@ -39,6 +40,10 @@
         el: '#app',
         data: {
             list: ['一', '二', '三', '四'],
+            list2: [
+                {id: 1, name: 'q'},
+                {id: 2, name: 'p'}],
+
             user: {name: 'Tony', age: '15', gender: 'male'}
         },
         methods: {},
