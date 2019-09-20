@@ -7,7 +7,7 @@
     <title>Demo</title>
 
     <!--<link rel="stylesheet"  type="text/html" href="./bootstrap.min.css">-->
-    <link rel="stylesheet" href="./bootstrap-3.3.7.css">
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
 
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -19,6 +19,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">添加品牌</h3>
+            <input type="button" value="test" @click="test(undefined,'12312')">
         </div>
         <div class="panel-body form-inline">
             <label>
@@ -53,7 +54,7 @@
         <tr v-for="item in search(keywords)" :key="item.id">
             <td>{{ item.id }}</td>
             <td>{{ item.name }}</td>
-            <td>{{ item.cTime }}</td>
+            <td>{{ item.cTime | dateFormatter("yyyy-mm-dd hh:mm:ss") }}</td>
             <td><a href="" @click.prevent="del(item.id)">删除</a></td>
         </tr>
         </tbody>
@@ -75,6 +76,10 @@
             ]
         },
         methods: {
+            test(var1,var2){
+                console.log(var2);
+                console.log(var1);
+            },
             add() {
                 const car = {id: this.id, name: this.name, cTime: new Date()};
                 this.list.push(car);
@@ -115,6 +120,25 @@
                 })
             }
         },
+        filters:{
+            dateFormatter(date, pattern) {
+                const dt = new Date(date);
+                const y = dt.getFullYear();
+                const m = dt.getMonth().toString().padStart(2,'0');
+                const d = dt.getDay().toString().padStart(2,'0');
+
+                if (pattern && pattern === "yyyy-mm-dd") {
+                    return `${y}-${m}-${d}`;
+                }
+
+                const hh = dt.getHours().toString().padStart(2,'0');
+                const mm = dt.getMinutes().toString().padStart(2,'0');
+                const ss = dt.getSeconds().toString().padStart(2,'0');
+
+
+                return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+            },
+        }
     });
 
 </script>
