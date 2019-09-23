@@ -19,19 +19,18 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">添加品牌</h3>
-            <input type="button" value="test" @click="test(undefined,'12312')">
         </div>
         <div class="panel-body form-inline">
             <label>
                 Id:
-                <input type="text" class="form-control" v-model="id">
+                <input type="text" class="form-control" v-model="id" v-focus v-color="'green'">
             </label>
             <label>
                 Name:
-                <input type="text" class="form-control" v-model="name">
+                <input type="text" class="form-control" v-model="name" @keyup.enter="add">
             </label>
-
             <input type="button" value="添加" class="btn btn-primary" @click="add">
+
             <label>
                 搜索：
                 <input type="text" class="form-control" v-model="keywords">
@@ -76,7 +75,7 @@
             ]
         },
         methods: {
-            test(var1,var2){
+            test(var1, var2) {
                 console.log(var2);
                 console.log(var1);
             },
@@ -114,31 +113,43 @@
                 });
                 return searchResult*/
 
-                return this.list.filter(item=>{
+                return this.list.filter(item => {
                     //TODO 不区分大小写
                     return item.name.includes(keywords)
                 })
             }
         },
-        filters:{
+        filters: {
             dateFormatter(date, pattern) {
                 const dt = new Date(date);
                 const y = dt.getFullYear();
-                const m = dt.getMonth().toString().padStart(2,'0');
-                const d = dt.getDay().toString().padStart(2,'0');
+                const m = dt.getMonth().toString().padStart(2, '0');
+                const d = dt.getDay().toString().padStart(2, '0');
 
                 if (pattern && pattern === "yyyy-mm-dd") {
                     return `${y}-${m}-${d}`;
                 }
 
-                const hh = dt.getHours().toString().padStart(2,'0');
-                const mm = dt.getMinutes().toString().padStart(2,'0');
-                const ss = dt.getSeconds().toString().padStart(2,'0');
-
+                const hh = dt.getHours().toString().padStart(2, '0');
+                const mm = dt.getMinutes().toString().padStart(2, '0');
+                const ss = dt.getSeconds().toString().padStart(2, '0');
 
                 return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
             },
-        }
+        },
+        directives: {
+            focus: {
+                bind(el) {},
+                inserted(el) {
+                    el.focus();
+                },
+                updated() {}
+            },
+            // 函数简写，绑定了两个钩子函数：bind、updated
+            color(el,binding){
+                el.style.color = binding.value;
+            },
+        },
     });
 
 </script>
