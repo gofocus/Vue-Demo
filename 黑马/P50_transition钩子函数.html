@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .ball {
+            width: 30px;
+            height: 30px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+<div id="app">
+    <input type="button" value="快到碗里去" @click="flag=!flag">
+    <transition
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter">
+        <div class="ball" v-show="flag"></div>
+    </transition>
+
+
+</div>
+
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            flag: false
+        },
+        methods: {
+            beforeEnter(el){
+                el.style.transform = "translate(20px, 20px)";
+            },
+            enter(el,done) {
+                el.offsetWidth; //必须写这一句，强制动画刷新
+                el.style.transform = "translate(300px, 500px)";
+                el.style.transition = 'all 1s ease';
+                done()  //done实际上是afterEnter()的引用
+            },
+            afterEnter(el) {
+                console.log("ok");
+                this.flag = false;
+                // this.flag = !this.flag;
+            }
+        },
+    });
+
+</script>
+</body>
+</html>

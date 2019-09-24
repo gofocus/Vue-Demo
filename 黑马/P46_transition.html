@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .v-enter-active, .v-leave-active {
+            transition: all 1.3s ease;
+        }
+
+        .v-enter, .v-leave-to {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+
+        /*自定义过渡前缀*/
+        .my-transition-enter-active, .my-transition-leave-active {
+            transition: all 1.3s ease;
+        }
+
+        .my-transition-enter, .my-transition-leave-to {
+            transform: translateY(100px);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <input type="button" value="Toggle" @click="show = !show">
+    <!--这里不能用this，直接写变量名称即可-->
+    <!--<input type="button" value="Toggle" @click="this.show = !this.show">-->
+
+    <transition>
+        <div v-show="show">
+            <p>Hello</p>
+        </div>
+    </transition>
+
+    <!--自定义过渡前缀-->
+    <transition name="my-transition">
+        <div v-show="show">
+            <p>自定义前缀</p>
+        </div>
+    </transition>
+
+    <!--自定义过渡的类名--> <!--结合第三方CSS动画库-->
+    <transition enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+        <div v-show="show">
+            <p>custom classes transition</p>
+        </div>
+    </transition>
+
+    <!--animated可以只写一次-->
+    <transition enter-active-class="tada" leave-active-class="bounceOutRight">
+        <div v-show="show" class="animated">
+            <p>custom classes transition2</p>
+        </div>
+    </transition>
+
+    <!--设置过渡持续时间 :duration-->
+    <transition enter-active-class="tada" leave-active-class="bounceOutRight" :duration="400">
+        <div v-show="show" class="animated">
+            <p>set duration</p>
+        </div>
+    </transition>
+
+    <!--分别设置入场和离场持续时间-->
+    <transition enter-active-class="tada" leave-active-class="bounceOutRight" :duration="{ enter:400,leave:1000 }">
+        <div v-show="show" class="animated">
+            <p>set duration</p>
+        </div>
+    </transition>
+
+
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            show: false,
+        },
+        methods: {},
+    })
+
+</script>
+</body>
+</html>
