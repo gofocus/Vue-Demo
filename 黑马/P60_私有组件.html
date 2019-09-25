@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+
+
+
+</div>
+
+<script>
+    var temp = Vue.compoent({
+        // 组件可以有自己的data，但data必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝
+        data: function () {
+            // data函数必须返回一个对象
+            return {
+
+            }
+        },
+        template: '',
+
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+    })
+
+</script>
+</body>
+</html>

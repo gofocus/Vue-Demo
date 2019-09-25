@@ -23,13 +23,23 @@
             transition: all 0.8s ease;
         }
 
-        .v-enter,.v-leave-to {
+        .v-enter,
+        .v-leave-to {
             opacity: 0;
             transform: translate(80px);
         }
 
-        .v-enter-active, .v-leave-active {
+        .v-enter-active,
+        .v-leave-active {
             transition: all .8s ease;
+        }
+
+        .v-move {
+            transition: all .8s ease;
+        }
+
+        .v-leave-active {
+            position: absolute;
         }
 
         .list-item {
@@ -37,9 +47,7 @@
             margin-right: 10px;
 
         }
-
     </style>
-
 
 </head>
 <body>
@@ -55,11 +63,9 @@
     </label>
     <input type="button" value="add" @click="add">
 
-    <ul>
-        <transition-group>
-            <li v-for="item in list" :key="item.id">{{ item.id}} --- {{ item.name }}</li>
-        </transition-group>
-    </ul>
+    <transition-group appear tag="ul">
+        <li v-for="(item,index) in list" :key="item.id" @click="del(index)">{{ item.id}} --- {{ item.name }}</li>
+    </transition-group>
 
     <transition-group name="list" tag="p">
         <span v-for="item in list" :key="item.id" class="list-item">{{ item.name }}</span>
@@ -72,7 +78,7 @@
     var vm = new Vue({
         el: '#app',
         data: {
-            id:'',
+            id: '',
             name: '',
             list: [
                 {id: 1, name: '易建联'},
@@ -81,9 +87,12 @@
             ]
         },
         methods: {
-            add(){
+            add() {
                 this.list.push({id: this.id, name: this.name});
                 this.id = this.name = '';
+            },
+            del(index) {
+                this.list.splice(index, 1);
             }
         },
     })

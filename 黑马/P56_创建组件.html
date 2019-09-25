@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建组件</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--引用驼峰命名的组件时，要把大写字母改为小写，单词之间使用横线链接-->
+    <my-component1></my-component1>
+    <my-component11></my-component11>
+    <my-component2></my-component2>
+    <my-component3></my-component3>
+    <login></login>
+</div>
+
+<!--方式三：在el指定的元素外定义template-->
+<template id="tmpl">
+    <div>
+        <span>方式3</span>
+        <p>创建组件的第3种方式</p>
+    </div>
+</template>
+
+<template id="login">
+    <div>
+        <p>私有组件</p>
+    </div>
+</template>
+
+<script>
+    // 方式一
+    var component1 = Vue.extend({
+        template: '<h3>通过Vue.extend创建组件</h3>'
+    });
+    // 驼峰命名
+    Vue.component('myComponent1', component1);
+
+    // 方式一的简写：省去中间变量
+    Vue.component('myComponent11', Vue.extend({
+        template: '<h3>通过Vue.extend创建组件(简写)</h3>'
+    }));
+
+    // 方式二：省去Vue.extend
+    Vue.component('myComponent2', {
+        template: '<h3>创建组件的方式2:省去Vue.extend</h3>'
+    });
+
+    // 方式三:将页面代码分离出去，模块化，也方便编写代码
+    Vue.component('myComponent3', {
+        template: '#tmpl'
+    })
+
+    // 注册全局组件必须在Vue实例创建之前
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+
+        // 私有组件
+        components: {
+            login: {template: '#login'}
+        }
+    })
+
+</script>
+</body>
+</html>
