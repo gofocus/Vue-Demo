@@ -27,7 +27,7 @@
             @before-enter="beforeEnter"
             @enter="enter"
             @after-enter="afterEnter">
-        <div class="ball" v-show="flag"></div>
+        <div class="ball" v-show="flag" :class="false"></div>
     </transition>
 
 
@@ -52,7 +52,6 @@
             afterEnter(el) {
                 console.log("ok");
                 this.flag = false;
-                // this.flag = !this.flag;
             }
         },
     });
