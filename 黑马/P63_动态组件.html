@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .tab-button {
+            padding: 6px 10px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background: #f0f0f0;
+            margin-bottom: -1px;
+            margin-right: -1px;
+        }
+
+        .tab-button:hover {
+            background: #e0e0e0;
+        }
+
+        /* 连写，既包含tab-button又包含active的class */
+        .tab-button.active {
+            background: #e0e0e0;
+        }
+
+        .tab {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .component-fade-enter-active,.component-fade-leave-active {
+            transition:opacity .3s ease;
+        }
+
+        .component-fade-enter, .component-fade-leave-to {
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <button
+            v-for="tab in tabs"
+            @click="currentTab = tab"
+            v-bind:class="['tab-button',{active: currentTab === tab }]"
+            :key="tab"
+    >{{ tab }}
+    </button>
+    <transition name="component-fade" mode="out-in">
+        <component :is="currentTabComponent" class="tab"></component>
+    </transition>
+</div>
+
+<script>
+    Vue.component('tab-home', {
+        template: '<h3>Home component</h3>'
+    });
+    Vue.component('tab-post', {
+        template: '<h3>Post component</h3>'
+    });
+    Vue.component('tab-archive', {
+        template: '<h3>Archive component</h3>'
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            tabs: ['Home', 'Post', 'Archive'],
+            currentTab: 'Home'
+        },
+        computed: {
+            currentTabComponent() {
+                return 'tab-' + this.currentTab.toLowerCase();
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

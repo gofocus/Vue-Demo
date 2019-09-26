@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>价格计算</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <script src="./js/vue.js"></script>
+    <style>
+        span {
+            display: inline-block;
+            margin-right: 50px;
+        }
+
+        .row, .count {
+            margin-right: -15px;
+            margin-left: -15px;
+            padding: 15px 0 0 15px;
+        }
+
+        .count span {
+            padding-left: 15px;
+        }
+
+        .ddd {
+            margin: 20px 200px 0 200px;
+        }
+
+        .count input {
+            width: 100px;
+        }
+
+        .form-control {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="ddd">
+    <comp1></comp1>
+    <comp2></comp2>
+    <comp3></comp3>
+
+</div>
+
+<template id="comp1">
+    <div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">铝合金计算</h3>
+            </div>
+            <form role="form">
+                <div class="row">
+                    <div class="col-xs-2"><label>长：<input type="text" class="form-control" v-model="a"></label></div>
+                    <div class="col-xs-2"><label>宽：<input type="text" class="form-control" v-model="b"></label></div>
+                    <div class="col-xs-2"><label>高：<input type="text" class="form-control" v-model="c"></label></div>
+                    <div class="col-xs-2"><label>个数：<input type="text" class="form-control" v-model="s1"></label></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2"><label>快递价：<input type="text" class="form-control" v-model="d"></label></div>
+                    <div class="col-xs-2"><label>平方价：<input type="text" class="form-control" v-model="p1"></label></div>
+                    <div class="col-xs-2"><label>税点：<input type="text" class="form-control" v-model="sd1"></label></div>
+                </div>
+            </form>
+            <br>
+            <div class="count">
+                <span>立方总数：{{ l1 }} m³</span>
+                <span>4面平方数：{{ m1 }} m²</span>
+                <span>税前价：{{ y1 }}</span>
+                <span>税后价：{{ y2 }}</span>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="comp2">
+    <div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">PVC计算</h3>
+            </div>
+            <form role="form">
+                <div class="row">
+                    <div class="col-xs-2"><label>长：<input type="text" class="form-control" v-model="e"></label></div>
+                    <div class="col-xs-2"><label>宽：<input type="text" class="form-control" v-model="f"></label></div>
+                    <div class="col-xs-2"><label>高：<input type="text" class="form-control" v-model="g"></label></div>
+                    <div class="col-xs-2"><label>个数：<input type="text" class="form-control" v-model="s2"></label></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2"><label>快递价：<input type="text" class="form-control" v-model="h"></label></div>
+                    <div class="col-xs-2"><label>平方价：<input type="text" class="form-control" v-model="p2"></label></div>
+                    <div class="col-xs-2"><label>税点：<input type="text" class="form-control" v-model="sd2"></label></div>
+                </div>
+            </form>
+            <br>
+            <div class="count">
+                <span>税前：{{ p }}</span>
+                <span>税后：{{ psh }}</span>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="comp3">
+    <div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">多套总和计算</h3>
+            </div>
+            <p class="count">
+                一套：<input type="text" class="form-control" v-model="t1">
+                +二套：<input type="text" class="form-control" v-model="t2">
+                +三套：<input type="text" class="form-control" v-model="t3">
+                +四套：<input type="text" class="form-control" v-model="t4">
+                =总价：{{ k }}
+            </p>
+        </div>
+    </div>
+</template>
+
+
+<script>
+    var comp1 = Vue.component('comp1', {
+        template: '#comp1',
+        data: function () {
+            return {
+                a: '',
+                b: '',
+                c: '',
+                s1: '',
+                d: '',
+                p1: '',
+                sd1: '',
+            }
+        },
+        computed: {
+            y1: function () {
+                return ((this.a * this.c * 2 + this.b * this.c * 2) * this.p1 + this.a * this.b * 120 + this.a * this.b * this.c * this.d) * this.s1
+            },
+            y2: function () {
+                if (this.sd1 !== '') {
+                    return ((this.a * this.c * 2 + this.b * this.c * 2) * this.p1 + this.a * this.b * 120 + this.a * this.b * this.c * this.d) * this.s1 + (((this.a * this.c * 2 + this.b * this.c * 2) * this.p1 + this.a * this.b * 120 + this.a * this.b * this.c * this.d) * this.s1) * this.sd1;
+                }
+            },
+            m1: function () {
+                return (this.a * this.c * 2 + this.b * this.c * 2) * this.s1;
+            },
+            l1: function () {
+                return this.a * this.b * this.c * this.s1;
+            }
+        }
+    });
+    var comp2 = Vue.component('comp2', {
+        template: '#comp2',
+        data: function () {
+            return {
+                e: '',
+                f: '',
+                g: '',
+                s2: '',
+                h: '',
+                p2: '',
+                sd2: '',
+            }
+        },
+        computed: {
+            p: function () {
+                return ((this.e * this.g * 4 + this.f * this.g * 4 + this.e * this.f) * this.p2 + this.e * this.f * this.g * this.h) * this.s2;
+            },
+            psh: function () {
+                return (((this.e * this.g * 4 + this.f * this.g * 4 + this.e * this.f) * this.p2 + this.e * this.f * this.g * this.h) * this.s2) + (((this.e * this.g * 4 + this.f * this.g * 4 + this.e * this.f) * this.p2 + this.e * this.f * this.g * this.h) * this.s2 * this.sd2);
+            }
+        },
+    });
+    var comp3 = Vue.component('comp3', {
+        template: '#comp3',
+        data: function () {
+            return {
+                t1: '0',
+                t2: '0',
+                t3: '0',
+                t4: '0',
+            }
+        },
+        computed: {
+            k: function () {
+                if (this.t1 !== '' && this.t2 !== '' && this.t3 !== '' && this.t4 !== '')
+                    return parseInt(this.t1) + parseInt(this.t2) + parseInt(this.t3) + parseInt(this.t4);
+            }
+        },
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+    });
+
+
+    /*    function sum(obj) {
+            y1 = ((a * c * 2 + b * c * 2) * p1 + a * b * 120 + a * b * c * d) * s1;//税前
+            if (sd1 != '') {
+                y2 = ((a * c * 2 + b * c * 2) * p1 + a * b * 120 + a * b * c * d) * s1 + (((a * c * 2 + b * c * 2) * p1 + a * b * 120 + a * b * c * d) * s1) * sd1;
+            }//税后
+            m1 = (a * c * 2 + b * c * 2) * s1;
+            l1 = a * b * c * s1;
+            p = ((e * g * 4 + f * g * 4 + e * f) * p2 + e * f * g * h) * s2;
+            psh = (((e * g * 4 + f * g * 4 + e * f) * p2 + e * f * g * h) * s2) + (((e * g * 4 + f * g * 4 + e * f) * p2 + e * f * g * h) * s2 * sd2);
+            if (t1 != '' && t2 != '' && t3 != '' && t4 != '') {
+                k = parseInt(t1) + parseInt(t2) + parseInt(t3) + parseInt(t4);
+            }
+        }*/
+
+</script>
+</body>
+</html>
