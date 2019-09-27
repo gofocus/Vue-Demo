@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/vue-router.js"></script>
+    <style>
+        .myActiveClass {
+            color: green;
+        }
+
+        .v-enter-active, .v-leave-active {
+            transition: all 1s ease;
+        }
+
+        .v-enter, .v-leave-to {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--直接用<a>标签时前面要加#-->
+    <a href="#/login">登陆</a>
+
+    <!--router-link默认会渲染成一个`<a>`标签-->
+    <router-link to="/register">注册</router-link>
+
+    <!--可以通过tag属性改变要渲染成的标签-->
+    <router-link to="/register" tag="span">注册2</router-link>
+
+    <!--过渡动效-->
+    <transition mode="out-in">
+        <!--路由出口-->
+        <!--路由匹配到的组件将渲染在这里-->
+        <router-view></router-view>
+    </transition>
+</div>
+
+<script>
+    const login = {
+        template: '<h3>登陆组件</h3>'
+    };
+
+    const register = {
+        template: '<h3>注册组件</h3>'
+    };
+
+    const routes = [
+        {path: '/', redirect: '/login'},
+        {path: '/login', component: login},
+        {path: '/register', component: register},
+    ]
+    /*
+        const routesObj = [
+            {path: '/login', component: login},
+            {path: '/register', component: register},
+        ]
+    */
+    const router = new VueRouter({
+        // routes是属性名，不能变。非简写时routes对应的对象的名字可以任意
+        // routes: routesObj
+        // routes 不带r
+        routes,
+        // 自定义active-class
+        linkActiveClass: 'myActiveClass'
+    });
+
+    const vm = new Vue({
+        el: '#app',
+        data: {},
+        router
+        //注意写法！后一种写法也可以，前面是简写
+        // router: router
+    })
+
+</script>
+</body>
+</html>

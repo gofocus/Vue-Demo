@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态路由匹配</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--以查询字符串的形式传参-->
+    <router-link to="/login?id=10">Login</router-link>
+
+    <router-link to="/register/20/30">Register</router-link>
+
+    <!--参数必须传-->
+    <!--<router-link to="/post">Post</router-link>-->
+    <router-link to="/post/40">Post</router-link>
+
+    <router-view></router-view>
+</div>
+
+<script>
+    const login = {
+        // 接收查询字符串传来的参数
+        template: '<h3>登陆组件  {{ $route.query.id }}</h3>',
+    };
+    const register = {
+        template: '<h3>注册组件 {{ $route.params.param1}} {{ $route.params.param2 }}</h3>'
+    };
+    const post = {
+        template: '<h3>博文组件 {{ $route.params.param}} </h3>',
+    };
+
+    const routes = [
+        {path: '/', redirect: '/login'},
+        {path: '/login', component: login},
+        {path: '/register/:param1/:param2', component: register},
+        {path: '/post/:param', component: post},
+    ];
+
+    const router = new VueRouter({
+        routes
+    });
+
+    const vm = new Vue({
+        el: '#app',
+        data: {},
+        router,
+    })
+
+</script>
+</body>
+</html>
