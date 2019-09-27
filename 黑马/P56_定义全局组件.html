@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>创建组件</title>
+    <title>定义全局组件</title>
     <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
     <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+    // ---定义全局组件---
     // 方式一
     var component1 = Vue.extend({
         template: '<h3>通过Vue.extend创建组件</h3>'
@@ -52,7 +53,7 @@
     // 方式三:将页面代码分离出去，模块化，也方便编写代码
     Vue.component('myComponent3', {
         template: '#tmpl'
-    })
+    });
 
     // 注册全局组件必须在Vue实例创建之前
     var vm = new Vue({
@@ -62,7 +63,9 @@
 
         // 私有组件
         components: {
-            login: {template: '#login'}
+            login: {
+                template: '#login'
+            }
         }
     })
 

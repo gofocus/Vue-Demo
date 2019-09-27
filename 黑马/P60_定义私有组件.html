@@ -13,32 +13,31 @@
 <body>
 <div id="app">
 
-
+    <my-comp></my-comp>
+    <comp></comp>
 
 </div>
 
 <script>
-    var temp = Vue.compoent({
+    // 这是一个字面量类型的 组件模板对象
+    const comp = {
         // 组件可以有自己的data，但data必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝
         data: function () {
             // data函数必须返回一个对象
             return {
-
             }
         },
-        template: '',
+        template: '<h3>定义私有组件</h3>',
+    };
 
-    });
-
-    var vm = new Vue({
+    const vm = new Vue({
         el: '#app',
-        data: {
-
-        },
-        methods: {
-
-        },
-    })
+        components: {
+            'my-comp': comp,
+            // 缩写
+            comp
+        }
+    });
 
 </script>
 </body>

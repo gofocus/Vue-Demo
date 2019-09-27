@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="blog-posts-event-demo">
+    <div :style="{fontSize:postFontSize + 'em'}">
+        <blog-post
+                v-for="post in posts"
+                v-bind:post="post"
+                v-bind:key="post.id"
+                @enlarge="postFontSize += $event">
+        </blog-post>
+    </div>
+
+</div>
+<template id="templ">
+    <div class="blog-post">
+        <h3>{{ post.title }}</h3>
+        <button @click="$emit('enlarge',0.2)">Enlarge text</button>
+        <div>{{ post.content }}</div>
+    </div>
+</template>
+
+
+<script>
+    Vue.component('blog-post', {
+        template: '#templ',
+        props: ['post'],
+    })
+
+    var vm = new Vue({
+        el: '#blog-posts-event-demo',
+        data: {
+            postFontSize: 1,
+            posts: [
+                {id: 1, title: 'My Journey with Vue', content: 'post1'},
+                {id: 2, title: 'Hello Vue', content: 'post2'}]
+        },
+    })
+
+</script>
+</body>
+</html>

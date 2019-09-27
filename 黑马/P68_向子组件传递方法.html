@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <tmpl @child-foo="parentFoo"></tmpl>
+</div>
+
+<template id="tmpl">
+    <!--或者可以理解为：父组件监听子组件事件-->
+    <input type="button" value="按钮" @click="myClick">
+</template>
+
+<script>
+    var tmpl = {
+        template:'#tmpl',
+        methods:{
+            myClick(){
+                this.$emit('child-foo',"子组件向父组件传参");
+            }
+        }
+    }
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+        },
+        methods:{
+            parentFoo(parameter){
+                console.log("调用了父组件中的方法");
+                console.log(parameter);
+            }
+        },
+        components:{
+            tmpl
+        }
+    })
+
+</script>
+</body>
+</html>

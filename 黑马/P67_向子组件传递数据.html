@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <my-comp msg="非动态传递父组件数据"></my-comp>
+    <my-comp :msg="msg"></my-comp>
+</div>
+
+<script>
+    var myComp = {
+        props: ['msg'],
+        data: function () {
+            return {
+                msg_self: '子组件自有的数据'
+            }
+        },
+        template: `<div>
+                    <p>使用Props向子组件传递数据: {{ msg }}</p>
+                    <p>{{ msg_self }}</p>
+                   </div>`
+    };
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '动态传递的父组件数据'
+        },
+        components: {
+            myComp
+        }
+    })
+
+</script>
+</body>
+</html>
