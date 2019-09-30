@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>嵌套路由</title>
+    <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+    <!-- Vue开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <router-link to="/account">account</router-link>
+
+
+    <router-view></router-view>
+</div>
+
+<template id="tmpl">
+    <!--不要忘了只能有唯一根元素-->
+    <div>
+        <h3>Account组件1</h3>
+        <router-link to="/account/login">Login</router-link>
+        <router-link to="/account/register">Register</router-link>
+        <router-view></router-view>
+    </div>
+</template>
+
+<script>
+    const login = {
+        template: '<h3>登陆组件</h3>',
+    };
+    const register = {
+        template: '<h3>注册组件</h3>'
+    };
+    const account = {
+        template: '#tmpl',
+    };
+
+    const routes = [
+        {
+            path: '/account',
+            component: account,
+            children: [
+                {path: 'login', component: login},
+                {path: 'register', component: register},
+            ]
+        },
+    ];
+
+    const router = new VueRouter({
+        routes
+    });
+
+    const vm = new Vue({
+        el: '#app',
+        data: {},
+        router,
+    })
+
+</script>
+</body>
+</html>
