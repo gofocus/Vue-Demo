@@ -15,16 +15,24 @@
     <input type="text" v-model="fullName">
 
 
-
-
 </div>
 
 <script>
-    var vm = new Vue({
+    const vm = new Vue({
         el: '#app',
         data: {
+            firstName: '',
+            lastName: '',
         },
-    })
+        computed: {
+            // 也可以这样写  'fullName':function(){}
+            fullName() {
+                if (this.firstName !== '' && this.lastName !== '') {
+                    return this.firstName + '-' + this.lastName;
+                }
+            }
+        }
+    });
 
 </script>
 </body>
