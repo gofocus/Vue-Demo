@@ -1,20 +1,18 @@
 
 
 import _ from 'lodash'
-
 import $ from 'jquery'
 
 
-
 $(function () {
-    $('li:odd').css('backgroundColor', 'lightgreen');
-    $('li:even').css('backgroundColor',function () {
+    $('li:odd').css('backgroundColor', 'green');
+    $('li:even').css('backgroundColor', function () {
         return '#' + 'D97364';
-    })
+    });
 
     document.body.appendChild(component());
 
-})
+});
 
 function component() {
     const element = document.createElement('div');
