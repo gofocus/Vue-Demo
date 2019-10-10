@@ -33,7 +33,8 @@ module.exports = {
             {test: /\.css$/, use: ['style-loader','css-loader']},
             {test: /\.ts$/, use: 'ts-loader'},
             {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']},
-            {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']}
+            {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
+            {test: /\.(jpg|png|gif|jpeg|bmp)$/, use: 'url-loader'}
         ]
     }
 };

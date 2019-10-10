@@ -6,4 +6,11 @@ html,body {
     font-size: 12px;
     line-height: 30px;
   }
+
+  .box {
+    width: 200px;
+    height: 100px;
+    background: url("../images/户型图.jpg");
+    background-size: cover;
+  }
 }
