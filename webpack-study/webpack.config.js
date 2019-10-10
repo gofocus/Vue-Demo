@@ -1,4 +1,5 @@
 const path = require('path');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -10,8 +11,15 @@ module.exports = {
         contentBase: './dist',
         hot: true,
         port: 3000,
-        open:true
+        open: true
     },
+    plugins: [
+        new htmlWebpackPlugin({
+            template: 'dist/index22.html',
+            // TODO 名字不一样无效
+            // filename: 'index2.html'
+        })
+    ]
 };
 
 
