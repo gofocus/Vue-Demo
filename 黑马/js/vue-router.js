@@ -487,7 +487,7 @@
   var tokensToRegExp_1 = tokensToRegExp;
 
   /**
-   * The main path matching regexp utility.
+   * The components path matching regexp utility.
    *
    * @type {RegExp}
    */
@@ -1777,7 +1777,7 @@
   function scrollToPosition (shouldScroll, position) {
     var isObject = typeof shouldScroll === 'object';
     if (isObject && typeof shouldScroll.selector === 'string') {
-      // getElementById would still fail if the selector contains a more complicated query like #main[data-attr]
+      // getElementById would still fail if the selector contains a more complicated query like #components[data-attr]
       // but at the same time, it doesn't make much sense to select an element with an id and an extra selector
       var el = hashStartsWithNumberRE.test(shouldScroll.selector) // $flow-disable-line
         ? document.getElementById(shouldScroll.selector.slice(1)) // $flow-disable-line
@@ -2721,12 +2721,12 @@
       // clean out app from this.apps array once destroyed
       var index = this$1.apps.indexOf(app);
       if (index > -1) { this$1.apps.splice(index, 1); }
-      // ensure we still have a main app or null if no apps
+      // ensure we still have a components app or null if no apps
       // we do not release the router so it can be reused
       if (this$1.app === app) { this$1.app = this$1.apps[0] || null; }
     });
 
-    // main app previously initialized
+    // components app previously initialized
     // return as we don't need to set up new history listener
     if (this.app) {
       return
