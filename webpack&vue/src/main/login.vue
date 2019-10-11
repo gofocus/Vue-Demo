@@ -7,13 +7,13 @@
 
 <script>
     export default {
-        data(){
+        data() {
             return {
-                msg:'这是login组件'
+                msg: '这是login组件'
             }
         },
-        methods:{
-            foo(){
+        methods: {
+            foo() {
                 console.log("foo");
             }
         }
@@ -21,7 +21,11 @@
 
 </script>
 
-<style>
-
-
+<style scoped lang="scss">
+    body {
+        div {
+            color: red;
+            font-style: italic;
+        }
+    }
 </style>
