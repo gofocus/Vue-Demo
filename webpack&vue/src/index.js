@@ -6,7 +6,7 @@ import MintUi from 'mint-ui';
 import 'mint-ui/lib/style.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
-
+import './css/index.css'
 
 Vue.use(VueRouter);
 Vue.use(MintUi);

@@ -13,17 +13,32 @@
 
     export default {
         name: "App",
+        data() {
+            return {
+                toastInstance: null,
+
+            }
+        },
         methods: {
+            getList() {
+                this.show();
+                setTimeout( ()=>{
+                    this.toastInstance.close();
+                }, 3000)
+            },
             show() {
-                Toast({
-                    iconClass:'oi oi-check',
+                this.toastInstance = Toast({
+                    iconClass: 'oi oi-check',
                     message: '提示信息',
                     position: 'top',
-                    duration: 2000,
-                    className: 'myToast',
+                    duration: -1,
+                    className: 'myToast',   //
                 })
             }
-        }
+        },
+        created() {
+            this.getList();
+        },
     }
 </script>
 
