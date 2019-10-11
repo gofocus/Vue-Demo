@@ -7,6 +7,11 @@ import './css/index.less';
 import './css/index.scss';
 // import 'bootstrap/dist/css/bootstrap.css'
 
+// class是ES6的高级语法，需要babel-loader的支持
+class Person {
+    static info = { name: '张三' }
+}
+
 $(function () {
     $('li:odd').css('backgroundColor', 'green');
     $('li:even').css('backgroundColor', function () {
@@ -15,6 +20,7 @@ $(function () {
 
     document.body.appendChild(component());
 
+    console.log(Person.info);
 });
 
 function component() {

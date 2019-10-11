@@ -35,7 +35,22 @@ module.exports = {
             {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']},
             {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
             {test: /\.(jpg|png|gif|jpeg|bmp)$/, use: 'url-loader'},
-            // {test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader'}
+            // {test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader'},
+
+            // babel-loader 解析高级JS语法
+            {
+                test: /\.js$/, exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        // 语法插件
+                        presets: ['@babel/preset-env'],
+                        // 解析class语法
+                        plugins: ['@babel/plugin-proposal-class-properties']
+                    }
+                }
+            },
+
         ]
     }
 };
