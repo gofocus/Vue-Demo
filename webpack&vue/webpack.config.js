@@ -29,7 +29,7 @@ module.exports = {
             {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']},
             {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
             {test: /\.(jpg|png|gif|jpeg|bmp)$/, use: 'url-loader'},
-            // {test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader'},
+            {test: /\.(ttf|eot|svg|woff|woff2|otf)$/, use: 'url-loader'},
             {
                 test: /\.js$/, exclude: /(node_modules|bower_components)/,
                 use: {
