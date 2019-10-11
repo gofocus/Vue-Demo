@@ -1,5 +1,6 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -18,7 +19,8 @@ module.exports = {
         new htmlWebpackPlugin({
             template: 'src/index.html',
             // filename: 'index.html'
-        })
+        }),
+        new VueLoaderPlugin()
     ],
     module: {
         rules: [
@@ -38,11 +40,12 @@ module.exports = {
                     }
                 }
             },
+            {test: /\.vue$/, use: 'vue-loader'},
 
         ]
     },
-    resolve:{
-        alias:{
+    resolve: {
+        alias: {
             // 改变默认导入的vue文件
             "vue$": "vue/dist/vue.js"
         }
