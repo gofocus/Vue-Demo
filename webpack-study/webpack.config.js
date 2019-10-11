@@ -10,7 +10,7 @@ module.exports = {
     devServer: {
         // 配置访问路径，会从这个路径找index.html
         // contentBase: 'dist',
-        contentBase: path.join(__dirname, "dist"),
+        // contentBase: path.join(__dirname, "dist"),
         hot: true,
         port: 3000,
         open: true,
@@ -30,11 +30,12 @@ module.exports = {
     module: {
         rules: [
             //一种类型文件有多个loader， 两个loader的顺序不能颠倒，从后往前调用。
-            {test: /\.css$/, use: ['style-loader','css-loader']},
+            {test: /\.css$/, use: ['style-loader', 'css-loader']},
             {test: /\.ts$/, use: 'ts-loader'},
             {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']},
             {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
-            {test: /\.(jpg|png|gif|jpeg|bmp)$/, use: 'url-loader'}
+            {test: /\.(jpg|png|gif|jpeg|bmp)$/, use: 'url-loader'},
+            // {test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader'}
         ]
     }
 };
