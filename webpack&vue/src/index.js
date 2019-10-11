@@ -5,7 +5,6 @@ import router from './js/router.js'
 
 Vue.use(VueRouter);
 
-
 new Vue({
     el: '#app',
     components:{
