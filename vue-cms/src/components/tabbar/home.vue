@@ -97,19 +97,20 @@
 
         .mui-grid-view.mui-grid-9 {
             background-color: white;
+
+            .mui-table-view-cell {
+                border: 0;
+
+                img {
+                    height: 60px;
+                    width: 60px;
+                }
+
+                .mui-media-body {
+                    font-size: 13px;
+                }
+            }
         }
 
-        .mui-grid-view.mui-grid-9 .mui-table-view-cell {
-            border: 0;
-
-            img {
-                height: 60px;
-                width: 60px;
-            }
-
-            .mui-media-body{
-                font-size: 13px;
-            }
-        }
     }
 </style>
