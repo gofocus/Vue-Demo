@@ -5,11 +5,12 @@ import cart from '../components/tabbar/cart.vue'
 import search from '../components/tabbar/search.vue'
 
 export default new VueRouter({
-    routes:[
-        { path: '/home', component: home},
-        { path: '/member', component: member},
-        { path: '/cart', component: cart},
-        { path: '/search', component: search},
+    routes: [
+        {path: '/', redirect: '/home'},
+        {path: '/home', component: home},
+        {path: '/member', component: member},
+        {path: '/cart', component: cart},
+        {path: '/search', component: search},
     ],
-    linkActiveClass:'mui-active'
+    linkActiveClass: 'mui-active'
 });

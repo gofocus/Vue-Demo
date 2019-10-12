@@ -1,11 +1,13 @@
 <template>
-    <div>
+    <div class="app-container">
         <!--header-->
         <mt-header fixed title="黑马Vue"></mt-header>
 
         <!--router-view-->
         <div id="content-area">
-            <router-view></router-view>
+            <transition>
+                <router-view></router-view>
+            </transition>
         </div>
 
         <!--tab bar-->
@@ -40,11 +42,31 @@
     }
 </script>
 
-<style scoped>
-    #content-area {
-        padding-top: 44px;
-        padding-bottom: 50px;
+<style scoped lang="scss">
+    .app-container {
 
+        #content-area {
+            padding-top: 40px;
+            padding-bottom: 50px;
+            overflow-x: hidden;
+
+            .v-enter{       // v-enter 、v-leave-to 表示的是状态
+                opacity: 0;
+                transform: translateX(100%);    //表示在进入之前，页面在手机屏幕右边100%的地方
+            }
+
+            .v-leave-to {
+                opacity: 0;
+                transform: translateX(-100%);   //表示在离开之后，页面在手机屏幕左边100%的地方
+                position: absolute;
+            }
+
+            .v-enter-active, .v-leave-active {
+                transition: all .5s ease;
+            }
+
+        }
     }
+
 
 </style>
