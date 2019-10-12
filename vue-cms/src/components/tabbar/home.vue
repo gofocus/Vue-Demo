@@ -1,17 +1,43 @@
 <template>
     <div>
-        <mt-swipe :auto="4000">
-            <mt-swipe-item>1</mt-swipe-item>
-            <mt-swipe-item>2</mt-swipe-item>
-            <mt-swipe-item>3</mt-swipe-item>
-            <mt-swipe-item>4</mt-swipe-item>
+        <mt-swipe>
+            <mt-swipe-item v-for="item in carouselList" :key="item.id">
+                <a :href="item.url"><img :src="item.img"/></a>
+            </mt-swipe-item>
         </mt-swipe>
     </div>
 </template>
 
 <script>
+    import {Toast} from 'mint-ui';
+
+
     export default {
-        name: "Home"
+        name: "Home",
+        data() {
+            return {
+                carouselList: [],
+
+            }
+        },
+        methods: {
+            getCarousel() {
+                this.axios.get(this.api + '/getlunbo').then((response) => {
+                    if (response.status === 200) {
+                        this.carouselList = response.data.message;
+                    }
+                    else {
+                        Toast({
+                            message: '获取轮播图失败'
+                        })
+                    }
+                })
+            },
+        },
+        created() {
+            this.getCarousel();
+
+        },
     }
 </script>
 
@@ -29,6 +55,11 @@
             &:nth-child(3) {
                 background-color: pink;
             }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
         }
     }
 </style>

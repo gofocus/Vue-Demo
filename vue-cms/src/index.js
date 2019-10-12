@@ -10,10 +10,10 @@ import './lib/mui/fonts/mui-icons-extra.ttf';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(MintUI);
-
+Vue.prototype.api = 'http://www.liulongbin.top:3005/api';
 
 new Vue({
     el: '#app',
