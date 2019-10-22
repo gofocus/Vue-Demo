@@ -9,11 +9,16 @@ import './lib/mui/css/icons-extra.css';
 import './lib/mui/fonts/mui-icons-extra.ttf';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import moment from 'moment';
 
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(MintUI);
 Vue.prototype.api = 'http://www.liulongbin.top:3005/api';
+
+Vue.filter('dateFormatter', function (date, pattern="YYYY-MM-DD HH:mm:ss") {
+    return moment(date).format(pattern);
+});
 
 new Vue({
     el: '#app',
