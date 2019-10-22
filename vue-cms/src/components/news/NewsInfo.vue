@@ -13,12 +13,16 @@
 
         </div>
 
+        <comment></comment>
+
     </div>
 
 </template>
 
 <script>
     import {Toast} from 'mint-ui';
+    import comment from '../subComp/comment.vue';
+
     export default {
         name: "newsInfo",
         data(){
@@ -43,6 +47,9 @@
         created(){
             this.getNewsInfo();
         },
+        components:{
+            comment
+        }
     }
 </script>
 
