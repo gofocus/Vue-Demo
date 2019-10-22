@@ -13,7 +13,7 @@
 
         </div>
 
-        <comment></comment>
+        <comment :artid="id"></comment>
 
     </div>
 

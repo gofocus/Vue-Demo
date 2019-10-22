@@ -3,22 +3,22 @@
         <h4>发表评论</h4>
         <hr>
         <label>
-            <textarea id="post-comment" cols="111111" placeholder="输入要BB的内容"></textarea>
+            <textarea id="post-comment" cols="111111" placeholder="输入要BB的内容" v-model="comment.content"></textarea>
         </label>
-        <div class="mui-btn mui-btn-primary">发表评论</div>
-        <ul class="comments-list">
-            <li v-for="item in commentsList" :id="item.add_time">
-                <div class="comment-info">
-                    <span>1楼 </span>
-                    <span>用户：{{ item.user_name }} </span>
-                    <span>发表时间：{{ item.add_time | dateFormatter }}</span>
+        <div class="mui-btn mui-btn-primary" @click="postComment">发表评论</div>
+        <div class="comments-list">
+            <div v-for="(item,index) in commentsList" :id="item.add_time" class="comment-item">
+                <div class="comment-title">
+                    <span>第{{ ++index }}楼&nbsp;</span>
+                    <span>用户：{{ item.user_name }} &nbsp;</span>
+                    <span>发表时间：{{ item.add_time | dateFormatter }}&nbsp;</span>
                 </div>
                 <div class="comment-content">
                     <p>{{ item.content }}</p>
                 </div>
-            </li>
-        </ul>
-        <div class="mui-btn mui-btn-danger">加载更多</div>
+            </div>
+        </div>
+        <div class="mui-btn mui-btn-danger" @click="getCommentsList">加载更多</div>
     </div>
 </template>
 
@@ -29,21 +29,38 @@
         name: "comment",
         data() {
             return {
-                artid: 1,
                 commentsList: [],
-
+                page: 1,
+                comment: {'content': ''}
             }
         },
+        props: ['artid'],
         methods: {
-            getCommentsList(){
-                this.axios.get(this.api + '/getcomments/' + this.artid + '?pageindex=1')
-                    .then(res=>{
+            getCommentsList() {
+                this.axios.get(this.api + '/getcomments/' + this.artid + '?pageindex=' + this.page)
+                    .then(res => {
                         if (res.data.status === 0) {
-                            this.commentsList = res.data.message;
-                        }else {
+                            if (res.data.message.length === 0) {
+                                Toast('没有更多评论了');
+                            } else {
+                                this.commentsList = this.commentsList.concat(res.data.message);
+                                this.page++;
+                            }
+
+                        } else {
                             Toast('读取newsInfo失败');
                         }
                     })
+            },
+            postComment() {
+                if (this.comment.content !== '') {
+                    this.axios.post(this.api + '/postcomment/' + this.artid, this.comment).then(res => {
+                        }
+                    );
+                }
+                else{
+                    Toast('评论内容不能为空');
+                }
             }
         },
         created() {
@@ -56,6 +73,12 @@
     .comment-container {
         padding: 0 4px;
 
+        textarea {
+            font-size: 14px;
+            margin: 0;
+            height: 100px;
+        }
+
         .mui-btn.mui-btn-primary, .mui-btn-danger {
             width: 100%;
         }
@@ -63,17 +86,24 @@
         .comments-list {
             padding: 6px 2px;
 
+            .comment-item {
+                margin: 5px 0;
 
-            .comment-info {
-                background-color: lightgrey;
-                font-size: 12px;
-            }
+                .comment-title {
+                    line-height: 35px;
+                    background-color: lightgrey;
+                    font-size: 12px;
+                }
 
-            .comment-content {
-                p {
-                    color: black;
+                .comment-content {
+                    p {
+                        color: black;
+                        text-indent: 2em;
+
+                    }
                 }
             }
+
         }
     }
 </style>
