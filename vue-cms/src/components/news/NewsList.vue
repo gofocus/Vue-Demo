@@ -2,7 +2,7 @@
     <div>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="news in newsList" :key="news.id">
-                <a href="" >
+                <router-link :to="'/home/newsInfo/'+ news.id ">
                     <img class="mui-media-object mui-pull-left" :src="news.img_url">
                     <div class="mui-media-body">
                         <h1>{{ news.title }}</h1>
@@ -11,7 +11,7 @@
                             <span>{{ news.click }}</span>
                         </p>
                     </div>
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>

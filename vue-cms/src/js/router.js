@@ -1,9 +1,10 @@
 import VueRouter from "vue-router";
-import home from '../components/tabbar/home.vue'
-import member from '../components/tabbar/member.vue'
-import cart from '../components/tabbar/cart.vue'
-import search from '../components/tabbar/search.vue'
+import home from '../components/tabbar/Home.vue'
+import member from '../components/tabbar/Member.vue'
+import cart from '../components/tabbar/Cart.vue'
+import search from '../components/tabbar/Search.vue'
 import NewsList from '../components/news/NewsList.vue';
+import NewsInfo from '../components/news/NewsInfo.vue';
 
 
 export default new VueRouter({
@@ -14,6 +15,7 @@ export default new VueRouter({
         {path: '/cart', component: cart},
         {path: '/search', component: search},
         {path: '/home/newsList', component: NewsList},
+        {path: '/home/newsInfo/:id', component: NewsInfo},
     ],
     linkActiveClass: 'mui-active'
 });

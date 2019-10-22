@@ -16,6 +16,7 @@ Vue.use(VueRouter);
 Vue.use(MintUI);
 Vue.prototype.api = 'http://www.liulongbin.top:3005/api';
 
+// 全局时间过滤器
 Vue.filter('dateFormatter', function (date, pattern="YYYY-MM-DD HH:mm:ss") {
     return moment(date).format(pattern);
 });
