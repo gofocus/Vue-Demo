@@ -5,7 +5,7 @@ import cart from '../components/tabbar/Cart.vue'
 import search from '../components/tabbar/Search.vue'
 import NewsList from '../components/news/NewsList.vue';
 import NewsInfo from '../components/news/NewsInfo.vue';
-
+import PhotoList from '../components/photos/PhotoList.vue';
 
 export default new VueRouter({
     routes: [
@@ -16,6 +16,7 @@ export default new VueRouter({
         {path: '/search', component: search},
         {path: '/home/newsList', component: NewsList},
         {path: '/home/newsInfo/:id', component: NewsInfo},
+        {path: '/home/photoList', component: PhotoList},
     ],
     linkActiveClass: 'mui-active'
 });

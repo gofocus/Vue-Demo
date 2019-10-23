@@ -7,6 +7,8 @@ import 'mint-ui/lib/style.css'
 import './lib/mui/css/mui.min.css';
 import './lib/mui/css/icons-extra.css';
 import './lib/mui/fonts/mui-icons-extra.ttf';
+import './lib/mui/js/webviewGroup.js';
+
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import moment from 'moment';
