@@ -53,12 +53,20 @@
                     })
             },
             postComment() {
-                if (this.comment.content !== '') {
+                if (this.comment.content.trim().length !== 0) {
                     this.axios.post(this.api + '/postcomment/' + this.artid, this.comment).then(res => {
+                            if (res.data.status === 0) {
+                                const newComment = {user_name: "匿名用户", add_time: new Date(), content: this.comment.content};
+                                this.commentsList.unshift(newComment);
+                                this.comment.content = '';
+                            }
+                            else {
+                                Toast('发表评论失败');
+                            }
                         }
                     );
                 }
-                else{
+                else {
                     Toast('评论内容不能为空');
                 }
             }
