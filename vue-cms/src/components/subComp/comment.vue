@@ -10,7 +10,7 @@
             <div v-for="(item,index) in commentsList" :id="item.add_time" class="comment-item">
                 <div class="comment-title">
                     <span>第{{ ++index }}楼&nbsp;</span>
-                    <span>用户：{{ item.user_name }} &nbsp;</span>
+                    <span>{{ item.user_name }} &nbsp;</span>
                     <span>发表时间：{{ item.add_time | dateFormatter }}&nbsp;</span>
                 </div>
                 <div class="comment-content">
