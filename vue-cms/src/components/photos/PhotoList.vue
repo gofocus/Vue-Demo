@@ -20,13 +20,17 @@
         <!--图片列表-->
         <div class="imgContainer">
             <ul class="img-list">
-                <li v-for="item in imgList" :ke="item.id">
+                <router-link v-for="item in imgList"
+                             :key="item.id"
+                             :to="'/home/photoInfo/' + item.id"
+                             tag="li"
+                >
                     <img v-lazy="item.img_url">
                     <div class="info">
                         <div class="info-title">{{ item.title }}</div>
                         <div class="info-body">{{ item.zhaiyao }}</div>
                     </div>
-                </li>
+                </router-link>
             </ul>
         </div>
     </div>
@@ -43,7 +47,6 @@
             return {
                 imgCategory: [{title: "全部", id: 0}],
                 imgList: [],
-                cateId: 0,
 
             };
         },
@@ -96,12 +99,14 @@
                 background-color: #ccc;
                 text-align: center;
                 margin-bottom: 10px;
-                box-shadow: 0 0 8px #999;
-                position:relative;
+                /*box-shadow: 0 0 8px #999;*/
+                position: relative;
 
                 img {
                     width: 100%;
                     vertical-align: middle;
+                    box-shadow: 0 0 8px #999;
+
                 }
                 img[lazy=loading] {
                     width: 40px;
@@ -112,9 +117,9 @@
                 .info {
                     color: white;
                     text-align: left;
-                    position:absolute;
-                    bottom:0;
-                    background-color: rgba(0,0,0,0.4);
+                    position: absolute;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, 0.4);
                     max-height: 80px;
 
                     .info-title {
