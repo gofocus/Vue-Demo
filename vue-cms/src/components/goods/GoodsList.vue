@@ -88,6 +88,7 @@
             flex-direction: column;
             justify-content:space-between;
             min-height: 293px;
+
             img {
                 width: 100%;
             }
@@ -102,8 +103,8 @@
                 p {
                     margin-bottom: 0;
                     padding: 4px;
-
                 }
+
                 .price {
                     .old {
                         text-decoration: line-through;
