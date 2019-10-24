@@ -1,11 +1,7 @@
 <template>
     <div class="home">
         <!--轮播图-->
-        <mt-swipe>
-            <mt-swipe-item v-for="item in carouselList" :key="item.id">
-                <a :href="item.url"><img :src="item.img"/></a>
-            </mt-swipe-item>
-        </mt-swipe>
+        <swipe :url="'/getlunbo'"></swipe>
 
         <!--六宫格-->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -46,60 +42,29 @@
 </template>
 
 <script>
-    import {Toast} from 'mint-ui';
-
+    import swipe from '../subComp/swipe.vue';
 
     export default {
         name: "Home",
         data() {
             return {
                 carouselList: [],
-
             }
         },
         methods: {
-            getCarousel() {
-                this.axios.get(this.api + '/getlunbo').then((response) => {
-                    if (response.status === 200) {
-                        this.carouselList = response.data.message;
-                    }
-                    else {
-                        Toast({
-                            message: '获取轮播图失败'
-                        })
-                    }
-                })
-            },
-        },
-        created() {
-            this.getCarousel();
 
         },
+        created() {
+        },
+        components:{
+            swipe
+        }
     }
 </script>
 
 <style scoped lang="scss">
     .home {
-        .mint-swipe {
-            height: 200px;
 
-            .mint-swipe-item {
-                &:nth-child(1) {
-                    background-color: blue;
-                }
-                &:nth-child(2) {
-                    background-color: greenyellow;
-                }
-                &:nth-child(3) {
-                    background-color: pink;
-                }
-            }
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
-        }
 
         .mui-grid-view.mui-grid-9 {
             background-color: white;
