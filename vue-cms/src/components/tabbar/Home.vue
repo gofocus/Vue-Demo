@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <!--轮播图-->
-        <swipe :url="'/getlunbo'"></swipe>
+        <swipe :carouselList="carouselList"></swipe>
 
         <!--六宫格-->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -52,9 +52,24 @@
             }
         },
         methods: {
-
+            getCarouselList() {
+                this.axios.get(this.api + '/getlunbo').then((response) => {
+                    if (response.data.status === 0 ) {
+                        this.carouselList = response.data.message;
+                        this.carouselList.forEach(item => {
+                            item.src = item.img;
+                        })
+                    }
+                    else {
+                        Toast({
+                            message: '获取轮播图失败'
+                        })
+                    }
+                })
+            },
         },
         created() {
+            this.getCarouselList();
         },
         components:{
             swipe

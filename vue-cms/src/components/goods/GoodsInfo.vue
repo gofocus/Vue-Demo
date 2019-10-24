@@ -4,7 +4,7 @@
             <div class="mui-card">
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner">
-                        <swipe :url="'/getthumimages/' + id"></swipe>
+                        <swipe :carouselList="carouselList"></swipe>
                     </div>
                 </div>
             </div>
@@ -45,6 +45,7 @@
 
 <script>
     import swipe from '../subComp/swipe.vue';
+    import {Toast} from 'mint-ui';
 
     export default {
         name: "GoodsInfo",
@@ -52,7 +53,7 @@
             return {
                 id: this.$route.params.id,
                 goodsInfo: {},
-                thumimages: [],
+                carouselList: [],
 
             }
         },
@@ -65,20 +66,24 @@
                         }
                     })
             },
-            getthumimages() {
+            getCarouselList() {
                 this.axios.get(this.api + '/getthumimages/' + this.id)
                     .then(res => {
                         if (res.data.status === 0) {
-                            this.thumimages = res.data.message;
+                            this.carouselList = res.data.message;
+                        }
+                        else {
+                            Toast('获取轮播图失败');
                         }
                     })
+
             }
         },
         created() {
-            this.getthumimages();
+            this.getCarouselList();
             this.getGoodsInfo();
         },
-        components:{
+        components: {
             swipe
         }
     }
@@ -89,7 +94,7 @@
         background-color: #eeeeee;
         overflow: hidden;
 
-        .mint-swipe{
+        .mint-swipe {
             height: 200px;
 
             a {

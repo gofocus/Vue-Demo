@@ -1,7 +1,7 @@
 <template>
     <mt-swipe :auto="4000">
         <mt-swipe-item v-for="item in carouselList" :key="item.src">
-            <a :href="item.src"><img :src="item.src"></a>
+            <a :href="item.url"><img :src="item.src"></a>
         </mt-swipe-item>
     </mt-swipe>
 </template>
@@ -14,26 +14,13 @@
         name: "swipe",
         data() {
             return {
-                carouselList: [],
             }
         },
-        props: ['url'],
+        props: ['carouselList'],
         methods: {
-            getCarousel(url) {
-                this.axios.get(this.api + url).then((response) => {
-                    if (response.data.status === 0 ) {
-                        this.carouselList = response.data.message;
-                    }
-                    else {
-                        Toast({
-                            message: '获取轮播图失败'
-                        })
-                    }
-                })
-            },
+
         },
         created() {
-            this.getCarousel(this.url);
         },
     }
 </script>
