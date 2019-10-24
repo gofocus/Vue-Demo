@@ -4,7 +4,7 @@
             <div class="mui-card">
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner">
-                        <swipe :carouselList="carouselList"></swipe>
+                        <swipe :carouselList="carouselList" :isFull="false"></swipe>
                     </div>
                 </div>
             </div>
@@ -96,6 +96,7 @@
 
         .mint-swipe {
             height: 200px;
+            text-align: center;
 
             a {
                 text-align: center;
