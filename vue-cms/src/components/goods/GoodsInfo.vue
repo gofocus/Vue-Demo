@@ -61,7 +61,7 @@
                 @enter="enter"
                 @after-enter="afterEnter"
         >
-            <div class="ball" v-show="ballFlag"></div>
+            <div class="ball" v-show="ballFlag" ref="ball"></div>
         </transition>
 
     </div>
@@ -119,9 +119,17 @@
                 el.style.transform = "translate(0,0)";
             },
             enter(el, done) {
+                // 动态计算小球移动距离
+                const ballPosition = this.$refs.ball.getBoundingClientRect();
+                // 子组件不能通过ref去拿父组件的元素，虽然Vue不推荐操作DOM，但针对的是数据绑定，这里直接操作DOM拿到徽标是最方便的
+                const badgePosition = document.getElementById('cart_badge').getBoundingClientRect();
+                const xDist = badgePosition.left - ballPosition.left;
+                const yDist = badgePosition.top - ballPosition.top;
+                console.log(xDist);
+                console.log(yDist);
                 el.offsetWidth;
-                el.style.transform = "translate(180px,405px)";
-                el.style.transition = "all 1s ease";
+                el.style.transform = `translate(${xDist}px,${yDist}px)`;
+                el.style.transition = "all .5s ease";
                 done();
             },
             afterEnter(el) {
