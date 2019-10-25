@@ -29,7 +29,8 @@
                             <br/>
                             <div class="purchase-btn">
                                 <div class="mui-btn mui-btn-danger">立即购买</div>
-                                <div class="mui-btn mui-btn-primary">加入购物车</div>
+                                <div class="mui-btn mui-btn-primary" @click="addToCart">加入购物车</div>
+
                             </div>
                         </div>
                     </div>
@@ -55,6 +56,13 @@
             </div>
         </div>
 
+        <transition
+                @before-enter="beforeEnter"
+                @enter="enter"
+                @after-enter="afterEnter"
+        >
+            <div class="ball" v-show="ballFlag"></div>
+        </transition>
 
     </div>
 </template>
@@ -71,6 +79,7 @@
                 id: this.$route.params.id,
                 info: {},
                 carouselList: [],
+                ballFlag: false,
             }
         },
         methods: {
@@ -102,7 +111,21 @@
                             Toast('获取轮播图失败');
                         }
                     })
-
+            },
+            addToCart(){
+                this.ballFlag = true;
+            },
+            beforeEnter(el) {
+                el.style.transform = "translate(0,0)";
+            },
+            enter(el, done) {
+                el.offsetWidth;
+                el.style.transform = "translate(180px,405px)";
+                el.style.transition = "all 1s ease";
+                done();
+            },
+            afterEnter(el) {
+                this.ballFlag = false;
             }
         },
         created() {
@@ -155,6 +178,8 @@
                 }
                 .purchase-btn {
                     margin: 7px 0;
+
+
                 }
             }
 
@@ -173,5 +198,15 @@
         .mui-card-footer {
             display: block;
         }
+    }
+    .ball {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        top: 390px;
+        left: 140px;
+        z-index: 99;
     }
 </style>
