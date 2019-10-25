@@ -40,17 +40,17 @@
 
         <div class="goods-content">
             <div class="mui-card">
-                <div class="mui-card-header mui-card-media"
-                     style="height:40vw;background-image:url(../images/cbd.jpg)"></div>
+                <div class="mui-card-header">商品参数</div>
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner">
-                        <p>Posted on January 18, 2016</p>
-                        <p style="color: #333;">这里显示文章摘要，让读者对文章内容有个粗略的概念...</p>
+                        <p>商品货号：{{ info.goods_no }}</p>
+                        <p>库存情况：{{ info.stock_quantity }}</p>
+                        <p>上架时间：{{ info.add_time | dateFormatter }}</p>
                     </div>
                 </div>
                 <div class="mui-card-footer">
-                    <a class="mui-card-link">Like</a>
-                    <a class="mui-card-link">Read more</a>
+                   <mt-button type="primary" size="large" plain>图文介绍</mt-button>
+                   <mt-button type="danger" size="large" plain>商品评论</mt-button>
                 </div>
             </div>
         </div>
@@ -161,6 +161,19 @@
 
         }
 
+        .goods-content {
+            .mui-btn{
+                width: 100%;
+            }
 
+            button {
+                margin: 10px 0;
+            }
+        }
+
+
+        .mui-card-footer {
+            display:block;
+        }
     }
 </style>
