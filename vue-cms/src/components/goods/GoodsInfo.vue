@@ -12,13 +12,29 @@
 
         <div class="goods-title">
             <div class="mui-card">
-                <div class="mui-card-header">页眉</div>
+                <div class="mui-card-header">{{ info.title }}</div>
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner">
-                        包含页眉页脚的卡片，页眉常用来显示面板标题，页脚用来显示额外信息或支持的操作（比如点赞、评论等）
+                        <div class="price">
+                            市场价：<span class="old">￥{{ info.market_price }}</span> &nbsp; &nbsp;
+                            销售价：<span class="now">￥{{ info.sell_price }}</span>
+                        </div>
+                        <div class="purchase">
+                            <span>购买数量:</span>
+                            <div class="mui-numbox" data-numbox-min='1'>
+                                <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                <input class="mui-numbox-input" type="number" value="1"/>
+                                <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                            </div>
+                            <br/>
+                            <div class="purchase-btn">
+                                <div class="mui-btn mui-btn-danger">立即购买</div>
+                                <div class="mui-btn mui-btn-primary">加入购物车</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="mui-card-footer">页脚</div>
+                <!--<div class="mui-card-footer">页脚</div>-->
             </div>
         </div>
 
@@ -46,23 +62,33 @@
 <script>
     import swipe from '../subComp/swipe.vue';
     import {Toast} from 'mint-ui';
+    import mui from '../../lib/mui/js/mui.js';
 
     export default {
         name: "GoodsInfo",
         data() {
             return {
                 id: this.$route.params.id,
-                goodsInfo: {},
+                info: {},
+                desc: {},
                 carouselList: [],
 
             }
         },
         methods: {
-            getGoodsInfo() {
+            getInfo() {
+                this.axios.get(this.api + '/goods/getinfo/' + this.id)
+                    .then(res => {
+                        if (res.data.status === 0) {
+                            this.info = res.data.message[0];
+                        }
+                    })
+            },
+            getDesc() {
                 this.axios.get(this.api + '/goods/getdesc/' + this.id)
                     .then(res => {
                         if (res.data.status === 0) {
-                            this.goodsInfo = res.data.message[0];
+                            this.desc = res.data.message[0];
                         }
                     })
             },
@@ -81,7 +107,11 @@
         },
         created() {
             this.getCarouselList();
-            this.getGoodsInfo();
+            this.getDesc();
+            this.getInfo();
+        },
+        mounted() {
+            mui('.mui-numbox').numbox();
         },
         components: {
             swipe
@@ -93,18 +123,44 @@
     .goods-info {
         background-color: #eeeeee;
         overflow: hidden;
+        .goods-img {
 
-        .mint-swipe {
-            height: 200px;
-            text-align: center;
-
-            a {
+            .mint-swipe {
+                height: 200px;
                 text-align: center;
-            }
 
-            img {
-                height: 100%;
+                img {
+                    height: 100%;
+                }
             }
         }
+
+        .goods-title {
+
+            .price {
+                margin: 7px 0;
+
+                .now {
+                    color: red;
+                    font-size: 16px;
+                }
+                .old {
+                    text-decoration: line-through;
+                    font-size: 13px;
+                }
+            }
+
+            .purchase {
+                .mui-numbox {
+                    height: 26px;
+                }
+                .purchase-btn {
+                    margin: 7px 0;
+                }
+            }
+
+        }
+
+
     }
 </style>
