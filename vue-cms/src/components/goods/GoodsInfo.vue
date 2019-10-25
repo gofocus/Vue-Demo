@@ -49,8 +49,8 @@
                     </div>
                 </div>
                 <div class="mui-card-footer">
-                   <mt-button type="primary" size="large" plain>图文介绍</mt-button>
-                   <mt-button type="danger" size="large" plain>商品评论</mt-button>
+                    <mt-button type="primary" size="large" plain @click="gotoDesc">图文介绍</mt-button>
+                    <mt-button type="danger" size="large" plain @click="gotoComments">商品评论</mt-button>
                 </div>
             </div>
         </div>
@@ -70,9 +70,7 @@
             return {
                 id: this.$route.params.id,
                 info: {},
-                desc: {},
                 carouselList: [],
-
             }
         },
         methods: {
@@ -84,13 +82,15 @@
                         }
                     })
             },
-            getDesc() {
-                this.axios.get(this.api + '/goods/getdesc/' + this.id)
-                    .then(res => {
-                        if (res.data.status === 0) {
-                            this.desc = res.data.message[0];
-                        }
-                    })
+            //跳转到图文详情页面
+            gotoDesc() {
+                this.$router.push({name: 'goodsDesc', params: {id: this.id}});
+                // this.$router.push('/home/goodsDesc/' + this.id);
+            },
+            //跳转到商品评论页面
+            gotoComments() {
+                this.$router.push({name: 'goodsComments', params: {id: this.id}});
+                // this.$router.push('/home/goodsDesc/' + this.id);
             },
             getCarouselList() {
                 this.axios.get(this.api + '/getthumimages/' + this.id)
@@ -107,7 +107,6 @@
         },
         created() {
             this.getCarouselList();
-            this.getDesc();
             this.getInfo();
         },
         mounted() {
@@ -162,7 +161,7 @@
         }
 
         .goods-content {
-            .mui-btn{
+            .mui-btn {
                 width: 100%;
             }
 
@@ -171,9 +170,8 @@
             }
         }
 
-
         .mui-card-footer {
-            display:block;
+            display: block;
         }
     }
 </style>

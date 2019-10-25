@@ -9,6 +9,8 @@ import PhotoList from '../components/photos/PhotoList.vue';
 import PhotoInfo from '../components/photos/PhotoInfo.vue';
 import GoodsList from '../components/goods/GoodsList.vue';
 import GoodsInfo from '../components/goods/GoodsInfo.vue';
+import GoodsDesc from '../components/goods/GoodsDesc.vue';
+import GoodsComments from '../components/goods/GoodsComments.vue';
 
 export default new VueRouter({
     routes: [
@@ -22,7 +24,9 @@ export default new VueRouter({
         {path: '/home/photoList', component: PhotoList},
         {path: '/home/photoInfo/:id', component: PhotoInfo},
         {path: '/home/goodsList', component: GoodsList},
-        {path:'/home/goodsInfo/:id', component: GoodsInfo},
+        {path: '/home/goodsInfo/:id', component: GoodsInfo},
+        {path: '/home/goodsDesc/:id', component: GoodsDesc, name: 'goodsDesc'},
+        {path: '/home/goodsComments/:id', component: GoodsComments, name: 'goodsComments'},
     ],
     linkActiveClass: 'mui-active'
 });
