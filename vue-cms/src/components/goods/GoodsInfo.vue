@@ -23,7 +23,7 @@
                             <span>购买数量:</span>
                             <div class="mui-numbox" data-numbox-min='1'>
                                 <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
-                                <input class="mui-numbox-input" type="number" value="1"/>
+                                <input class="mui-numbox-input" type="number"/>
                                 <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
                             </div>
                             <br/>
@@ -112,8 +112,22 @@
                         }
                     })
             },
-            addToCart(){
+            addToCart() {
                 this.ballFlag = true;
+
+                /* TODO  这种写法刷新页面后出现bug，count将一直是numBox的两倍
+                  this.info.count = mui('.mui-numbox').numbox().getValue();
+                  this.info.selected = true;
+                  this.$store.commit('increment', this.info);*/
+
+                var goodsInfo = {
+                    id: this.id,
+                    title: this.info.title,
+                    count: mui('.mui-numbox').numbox().getValue(),
+                    price: this.info.sell_price,
+                    selected: true
+                };
+                this.$store.commit('increment', goodsInfo)
             },
             beforeEnter(el) {
                 el.style.transform = "translate(0,0)";
@@ -125,8 +139,6 @@
                 const badgePosition = document.getElementById('cart_badge').getBoundingClientRect();
                 const xDist = badgePosition.left - ballPosition.left;
                 const yDist = badgePosition.top - ballPosition.top;
-                console.log(xDist);
-                console.log(yDist);
                 el.offsetWidth;
                 el.style.transform = `translate(${xDist}px,${yDist}px)`;
                 el.style.transition = "all .5s ease";
@@ -187,7 +199,6 @@
                 .purchase-btn {
                     margin: 7px 0;
 
-
                 }
             }
 
@@ -207,6 +218,7 @@
             display: block;
         }
     }
+
     .ball {
         width: 15px;
         height: 15px;

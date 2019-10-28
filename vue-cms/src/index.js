@@ -12,10 +12,13 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import moment from 'moment';
 
+import store from './js/store.js';
+
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(MintUI);
 Vue.prototype.api = 'http://www.liulongbin.top:3005/api';
+
 
 // 全局时间过滤器
 Vue.filter('dateFormatter', function (date, pattern="YYYY-MM-DD HH:mm:ss") {
@@ -28,6 +31,7 @@ new Vue({
         app
     },
     router,
+    store
 });
 
 
