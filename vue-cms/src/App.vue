@@ -2,7 +2,7 @@
     <div class="app-container">
         <!--header-->
         <mt-header fixed title="黑马Vue">
-            <a slot="left" @click="goBack">
+            <a slot="left" @click="goBack" v-show="flag">
                 <mt-button icon="back">返回</mt-button>
             </a>
         </mt-header>
@@ -26,8 +26,7 @@
                 <span class="mui-tab-label">会员</span>
             </a>
             <a @click="goTo('/cart')" class="mui-tab-item">
-                <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="cart_badge">{{ $store.getters.getTotalCount
-                    }}</span></span>
+                <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="cart_badge">{{ $store.getters.getTotalCount}}</span></span>
                 <span class="mui-tab-label">购物车</span>
             </a>
             <a @click="goTo('/search')" class="mui-tab-item">
@@ -43,7 +42,9 @@
 <script>
     export default {
         data() {
-            return {}
+            return {
+                flag: false
+            }
         },
         methods: {
             goTo(path) {
@@ -53,6 +54,11 @@
                 this.$router.go(-1);
             }
         },
+        watch: {
+            "$route.path": function (newVal) {
+                this.flag = newVal !== '/home';
+            }
+        }
     }
 </script>
 

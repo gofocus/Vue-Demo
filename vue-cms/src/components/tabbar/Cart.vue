@@ -3,10 +3,9 @@
         <div class="goods-list-container">
             <div class="goods-list" v-for="item in $store.state.cart" :key="item.id">
                 <div class="goods-select">
-                    <div class="mui-input-row mui-checkbox mui-left">
-                        <label></label>
-                        <input name="checkbox" value="Item 1" type="checkbox" :checked="item.selected">
-                    </div>
+                    <mt-switch :value="item.selected"
+                               @change="checkboxChanged(item.id,item.selected)">
+                    </mt-switch>
                 </div>
                 <img src="http://demo.dtcms.net/upload/201504/20/thumb_201504200119256512.jpg" alt="">
                 <div class="goods-info">
@@ -23,6 +22,21 @@
             </div>
         </div>
         <div class="goods-count">
+            <div class="mui-card">
+                <div class="mui-card-content">
+                    <div class="mui-card-content-inner">
+                        <div class="left">
+                            <p>总计（不含运费）</p>
+                            <p>已勾选商品 <span class="red">{{ $store.getters.getTotalCount }}</span> 件，总价 <span class="red">￥{{ $store.getters.getTotalPrice }}</span>
+                            </p>
+                        </div>
+                        <div class="right">
+                            <mt-button type="danger">去结算</mt-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
 
@@ -41,12 +55,15 @@
         methods: {
             removeCartItem(id) {
                 this.$store.commit('removeCartItem', id);
+            },
+            checkboxChanged(id, flag) {
+                this.$store.commit('updateGoodsSelected', {id: id, selected: flag})
             }
         },
         created() {
 
         },
-        components:{
+        components: {
             cartNumBox
         }
     }
@@ -68,11 +85,7 @@
                 box-shadow: 0 0 5px grey;
 
                 .goods-select {
-                    width: 60px;
-                    line-height: 30px;
-                    .mui-checkbox {
-                        margin: auto;
-                    }
+                    padding: 0 2px;
                 }
 
                 img {
@@ -108,6 +121,18 @@
                         }
                     }
                 }
+            }
+        }
+
+        .mui-card-content-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .red {
+                color: red;
+                font-weight: bold;
+                font-size: 16px;
             }
         }
     }
