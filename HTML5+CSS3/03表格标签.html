@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格标签</title>
+</head>
+<body>
+<div>
+    <table border="1" cellspacing="0" cellpadding="20" align="center">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>合并单元格1</th>
+            <th>合并单元格2</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>小王</td>
+            <td>male</td>
+            <td>21</td>
+            <td colspan="2">2</td>
+            <!--删除被合并的单元格-->
+            <!--<td></td>-->
+        </tr>
+        <tr>
+            <td>小王8</td>
+            <td>female</td>
+            <td>24</td>
+            <td rowspan="2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>小王8</td>
+            <td>female</td>
+            <td>24</td>
+            <!--删除被合并的单元格-->
+            <!--<td></td>-->
+            <td></td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+</div>
+
+
+</body>
+</html>
