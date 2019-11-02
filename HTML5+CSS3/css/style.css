@@ -194,3 +194,42 @@ a {
     text-align: center;
     color: #00a4ff;
 }
+
+
+.recommend {
+    margin: 8px auto;
+    height: 60px;
+    box-shadow: 0 0 1px 0px;
+    line-height: 60px;
+}
+
+.recommend-title {
+    float: left;
+    padding: 0 35px;
+    color: #00a4ff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.recommend-content {
+    float: left;
+}
+
+
+.recommend-content ul {
+    float: left;
+}
+.recommend-content li {
+    float: left;
+    padding: 0 35px;
+    border-left: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+}
+
+.recommend-content li a {
+    color: #050505;
+}
+
+.recommend-content button {
+    float: left;
+}
