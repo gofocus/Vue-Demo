@@ -195,12 +195,12 @@ a {
     color: #00a4ff;
 }
 
-
 .recommend {
     margin: 8px auto;
     height: 60px;
-    box-shadow: 0 0 1px 0px;
-    line-height: 60px;
+    box-shadow: 0 2px 3px 3px rgba(0, 0, 0, .1);
+    /*line-height: 60px;*/
+    /*padding: 15px 0;*/
 }
 
 .recommend-title {
@@ -209,21 +209,23 @@ a {
     color: #00a4ff;
     font-size: 16px;
     font-weight: bold;
+    margin: 20px 0;
 }
 
 .recommend-content {
     float: left;
-}
+    margin: 20px 0;
 
+}
 
 .recommend-content ul {
     float: left;
 }
+
 .recommend-content li {
     float: left;
-    padding: 0 35px;
+    padding: 0 30px;
     border-left: 1px solid #bfbfbf;
-    border-right: 1px solid #bfbfbf;
 }
 
 .recommend-content li a {
@@ -233,3 +235,12 @@ a {
 .recommend-content button {
     float: left;
 }
+
+.recommend-alter {
+    float: right;
+    line-height: 60px;
+    padding-right: 20px;
+    color: deepskyblue;
+    font-size: 14px;
+}
+
