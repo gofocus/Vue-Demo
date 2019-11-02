@@ -25,7 +25,6 @@ a {
     height: 42px;
     /*padding: 29px 0;*/
     margin: 30px auto;
-    /*background-color: red;*/
 }
 
 .header-logo {
@@ -98,9 +97,100 @@ a {
     margin: 6px 6px 6px 20px;
 }
 
-.user-name{
+.user-name {
     float: left;
     line-height: 42px;
     font-size: 14px;
     color: #666666;
+}
+
+.banner {
+    height: 420px;
+    background-color: #1c036c;
+}
+
+.banner-carousel {
+    height: 420px;
+    background: url("../image/banner2.png");
+}
+
+.banner-nav {
+    float: left;
+    /*width: 190px;*/
+    height: 420px;
+    background-color: rgba(0, 0, 0, 0.3);
+
+}
+
+.banner-nav ul {
+    float: left;
+    width: 190px;
+    /*height: 420px;*/
+
+    padding-top: 16px;
+}
+
+.banner-nav ul li {
+    padding: 0 20px;
+    height: 44px;
+}
+
+.banner-nav ul li a {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.banner-nav ul li a span {
+    float: right;
+}
+
+.banner-nav ul li a:hover {
+    color: deepskyblue;
+}
+
+.banner-timetable {
+    float: right;
+    height: 300px;
+    width: 230px;
+    background: #ffffff;
+    margin: 60px auto;
+}
+
+.banner-timetable-title {
+    background-color: #9bceea;
+    color: #ffffff;
+    height: 48px;
+    line-height: 48px;
+    font-size: 18px;
+    text-align: center;
+
+}
+
+.banner-timetable-list {
+    padding: 0 20px;
+}
+
+.banner-timetable-list li {
+    padding: 15px 0;
+    border-bottom: 1px solid #efefef;
+}
+
+.banner-timetable-list li h4 {
+    font-size: 16px;
+    color: #4e4e4e;
+}
+
+.banner-timetable-list li div {
+    font-size: 12px;
+    color: #a5a5a5;
+}
+
+.banner-timetable-all a {
+    display: block;
+    margin: 5px 0;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #00a4ff;
+    text-align: center;
+    color: #00a4ff;
 }
