@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素的显示与隐藏</title>
+    <style>
+
+        .container {
+            width: 520px;
+            height: 280px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .curtain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+            display: none;
+        }
+
+        /*还可以这样写！*/
+        .container:hover .curtain {
+            display: block;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="./image/taobao-lunbo1.jpg" alt="">
+    <div class="curtain"></div>
+</div>
+
+</body>
+</html>

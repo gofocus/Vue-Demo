@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tb-promo {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 110px auto;
+            background-color: pink;
+        }
+
+        .tb-promo img {
+            width: 100%;
+        }
+
+        .prev,
+        .next {
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            line-height: 30px;
+            background: rgba(0, 0, 0, .3);
+            /*top: 50%;*/
+            bottom: 50%;
+            /*margin-top: -15px;*/
+            margin-bottom: -15px;
+            color: rgb(249, 244, 244);
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            font-size: 18px;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+            text-align: right;
+        }
+
+        .tb-promo a:hover {
+            background: rgba(0, 0, 0, .5);
+        }
+
+        .promo-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            background: rgba(255, 255, 255, .3);
+            margin-left: -36px;
+            border-radius: 6px;
+            padding: 2px 2px;
+        }
+
+        .promo-nav li {
+            float: left;
+        }
+
+        .promo-nav a {
+            display: block;
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin: 0 2px;
+            /*padding: 0 2px;*/
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="tb-promo">
+
+    <img src="./image/taobao-lunbo1.jpg" alt="">
+    <a href="" class="prev">&lt;</a>
+    <a href="" class="next">&gt;</a>
+    <ul class="promo-nav">
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+    </ul>
+
+</div>
+
+
+</body>
+</html>
