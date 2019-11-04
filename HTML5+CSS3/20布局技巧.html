@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+
+    /*margin负值的巧妙应用*/
+    ul {
+        width: 1004px;
+        height: 300px;
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        float: left;
+        width: 250px;
+        height: 300px;
+        border: 1px solid black;
+        /*用margin-left压住旁边盒子的边框*/
+        margin-left: -1px;
+    }
+
+    li:hover {
+        border: 1px solid blue;
+        position: relative;
+        /*如果原先就有相对定位，还要提高z-index*/
+        /*z-index: 1;*/
+    }
+
+    /*----------------*/
+
+    /*文字环绕浮动元素*/
+    .div2 {
+        width: 300px;
+        height: 70px;
+        background-color: pink;
+    }
+
+    .img-container{
+        float: left;
+    }
+    /*————————————————————*/
+
+
+    /*用行内块元素做分页栏*/
+    .pagination {
+        /*父元素添加text-align: center，其中的行内块、行内元素会自动居中*/
+        text-align: center;
+
+    }
+
+    .pagination>a{
+        display: inline-block;
+        height: 36px;
+        /*width: 36px;*/
+        min-width: 36px;
+        line-height: 36px;
+        text-align: center;
+        text-decoration: none;
+        color: #000;
+        border: 1px solid black;
+        padding: 0 5px;
+    }
+    /*————————————————————*/
+
+    /*三角强化*/
+    .triangle {
+        float: right;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 40px 20px 0 0;
+        border-color: transparent #ffffff transparent transparent;
+    }
+
+    .price {
+        border: 1px solid red;
+        width: 200px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .now
+     {
+        float: left;
+        width: 120px;
+        height: 40px;
+        background-color: red;
+    }
+
+    .old {
+        color: #757575;
+        text-decoration: line-through;
+    }
+    /*————————————————————*/
+
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>布局技巧</title>
+</head>
+<body>
+
+<!--margin负值的巧妙应用-->
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<!--文字环绕浮动元素-->
+<div class="div2">
+    <div class="img-container">
+        <img src="./image/学成在线.jpg" alt="">
+    </div>
+    <p>内马尔希特勒内马尔希特勒内马尔希勒</p>
+</div>
+
+
+<!--用行内块元素做分页栏-->
+<div class="pagination">
+    <a href="#">&lt;&lt;上一页</a>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">&gt;&gt;下一页</a>
+</div>
+
+
+<!--三角强化-->
+<div class="price">
+    <div class="now">
+        <div class="triangle"></div>
+        <span>$1314</span>
+    </div>
+    <div class="old"><span>$2333</span></div>
+
+</div>
+
+
+</body>
+</html>
