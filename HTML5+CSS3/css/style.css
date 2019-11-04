@@ -86,21 +86,24 @@ a {
 
 .header-user {
     float: left;
-
+    line-height: 42px;
 }
 
 .user-icon {
-    float: left;
+    display: inline-block;
+    /*float: left;*/
+    vertical-align: middle;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     background: url("../image/20130502185029_EkKYh拷贝.png") no-repeat;
-    margin: 6px 6px 6px 20px;
+    /*margin: 6px 6px 6px 20px;*/
+    margin: 0 10px 0 20px;
 }
 
 .user-name {
-    float: left;
-    line-height: 42px;
+    /*float: left;*/
+    /*line-height: 42px;*/
     font-size: 14px;
     color: #666666;
 }
