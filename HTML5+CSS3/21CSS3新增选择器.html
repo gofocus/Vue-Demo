@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /*属性选择器*/
+        input[type=text] {
+            color: pink;
+        }
+
+        div[class^=icon] {
+            color: pink;
+        }
+
+        /*结构伪类选择器*/
+        ul li:first-child {            /*选择器之间不能有空格*/
+            color: pink;
+        }
+
+        ul li:nth-child(3) {
+            color: skyblue;
+        }
+
+        ul li:nth-child(even) {
+            color: green;
+        }
+
+
+        /*伪元素选择器*/
+        .forge {
+            width: 200px;
+            height: 30px;
+            border: 1px solid pink;
+        }
+
+        .forge::after {
+            content: '>';
+            float: right;
+            line-height: 30px;
+            padding: 0 5px;
+            font-size: 26px;
+        }
+
+        .curtain {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 20px auto;
+        }
+
+        /*利用伪元素添加幕布*/
+        .curtain::before {
+            content: '';
+            position: absolute;     /* 绝对定位不能少 */
+            display: none;          /* 平时隐藏幕布 */
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.3);
+        }
+
+        .curtain:hover::before {
+            display: block;
+        }
+
+
+    </style>
+    <title>CSS3新增选择器</title>
+</head>
+<body>
+
+
+<input type="text">
+<input type="password">
+
+<!--div.icon${$}*4-->
+<div class="icon1">1</div>
+<div class="icon2">2</div>
+<div class="icon3">3</div>
+<div class="icon4">4</div>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+
+<div class="forge"></div>
+
+<!--利用伪元素添加幕布-->
+<div class="curtain">
+    <img src="./image/taobao-lunbo1.jpg" alt="">
+</div>
+
+</body>
+</html>
