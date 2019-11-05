@@ -1,0 +1,39 @@
+
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.shortcut {
+    height: 31px;
+    background-color: #eee;
+    line-height: 31px;
+
+}
+
+.shortcut a {
+}
+
+.shortcut-left {
+    float: left;
+}
+
+.shortcut-right {
+    float: right;
+}
+
+.shortcut-right li {
+    float: left;
+}
+
+.shortcut-right li:nth-child(2n) {
+    width: 1px;
+    height: 10px;
+    background-color: #757575;
+    margin: 11px;
+}
+
+.shortcut-right li a {
+
+}
+
