@@ -1,7 +1,28 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('../fonts/iconfont.eot');
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/iconfont.woff2') format('woff2'),
+    url('../fonts/iconfont.woff') format('woff'),
+    url('../fonts/iconfont.ttf') format('truetype'),
+    url('../fonts/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    /*font-size: 16px;*/
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 .w {
     width: 1200px;
     margin: 0 auto;
+}
+
+.red {
+    color: red;
 }
 
 .shortcut {
@@ -28,12 +49,55 @@
 
 .shortcut-right li:nth-child(2n) {
     width: 1px;
-    height: 10px;
+    height: 11px;
     background-color: #757575;
-    margin: 11px;
+    margin: 11px 5px 0;
 }
 
 .shortcut-right li a {
-
+    padding: 0 7px;
 }
 
+.header {
+    /*height: 82px;*/
+    padding-top: 27px ;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.search-container {
+    height: 35px;
+    width: 538px;
+    position: absolute;
+    left: 50%;
+    margin-left: -269px;
+}
+
+.logo,
+.search-container,
+.cart,
+.search-input,
+.search-button{
+    float: left;
+}
+
+.search-input {
+    width: 455px;
+    height: 35px;
+    border: 1px solid #b1191a;
+    padding-left: 7px;
+}
+
+.search-button {
+    width: 83px;
+    height: 35px;
+    background-color: #b1191a;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.search-link a {
+    padding: 7px 12px 0;
+    font-size: 12px;
+    float: left;
+}
