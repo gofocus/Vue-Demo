@@ -1,18 +1,16 @@
 
-
-
 .main {
     margin-left: 220px;
-    background-color: skyblue;
+    padding-top: 15px;
+    /*background-color: skyblue;*/
     height: 465px;
+    background-color: #ebebeb;
 }
-
 
 .carousel {
     float: left;
     width: 721px;
     height: 100%;
-    background-color: pink;
     padding-right: 10px;
 }
 
@@ -22,22 +20,24 @@
 }
 
 .newsflash {
+    position: relative;
     float: right;
     width: 258px;
     height: 100%;
+    background-color: #fff;
 }
 
 .newsflash1 {
     height: 164px;
-    background-color: #00c244;
-    /*width: 100%;*/
     border: 1px solid;
     border-bottom: none;
 
 }
+
 .newsflash2 {
     height: 210px;
-    background-color: gold;
+    margin-left: 1px;
+    margin-top: 1px;
     /*width: 100%;*/
 }
 
@@ -46,18 +46,52 @@
     border-bottom: 1px dashed;
     font-size: 14px;
     line-height: 33px;
+    padding-left: 10px;
 }
 
-.newsflash1-content {
+.newsflash1-title a {
+    float: right;
 }
 
+.newsflash1-content li {
+    padding-top: 7px;
+    padding-left: 7px;
+}
 
+.newsflash2 li {
+    float: left;
+    margin-left: -1px;
+    margin-top: -1px;
+}
 
+.newsflash2 li a {
+    display: block;
+    width: 65px;
+    height: 70px;
+    line-height: 34px;
+    text-align: center;
+    border: 1px solid;
+}
 
+.newsflash2 li:nth-child(4n) a {
+    width: 66px;
+}
 
+.newsflash2 li a:hover {
+    color: #666;
+}
 
-
-
+.newsflash2 span {
+    display: block;
+    font-size: 36px;
+    line-height: 39px;
+    color: red;
+}
+.newsflash3 img{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 
 
 
