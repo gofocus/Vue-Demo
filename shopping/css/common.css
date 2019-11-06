@@ -65,9 +65,8 @@
 .header {
     position: relative;
     padding-top: 27px;
-    height: 100px;
+    height: 115px;
 }
-
 
 .search,
 .hotwords {
@@ -79,7 +78,7 @@
 }
 
 .hotwords {
-    bottom: 0;
+    bottom: 15px;
 }
 
 .logo,
@@ -148,4 +147,75 @@
     background-color: #e60012;
     border-radius: 7px 7px 7px 0;
 }
+
+/*--------------------nav-----------------*/
+.nav {
+    height: 47px;
+    line-height: 47px;
+    text-align: center;
+    border-bottom: 2px solid #b1191a;
+    font-size: 16px;
+}
+
+.nav .dropdown {
+    position: relative;
+    float: left;
+    width: 209px;
+    height: 47px;
+    background-color: #b1191a;
+    color: #ffffff;
+}
+
+.nav .w > ul {
+    float: left;
+
+}
+
+.nav .w > ul li {
+    float: left;
+    padding: 0 25px;
+}
+
+.dd {
+    display: none;
+    position: absolute;
+    width: 210px;
+    height: 465px;
+    background-color: #c81623;
+    top: 47px;
+}
+
+.dd ul li {
+    padding: 0 0 0 2px;
+    line-height: 31px;
+    text-align: left;
+}
+
+.dd ul li:hover {
+    background-color: #fff;
+}
+
+.dd ul li:hover a {
+    color: red;
+}
+
+.dd ul li a {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 14px;
+    padding-left: 7px;
+}
+
+.dd ul li::after {
+    content: '\e6ed';
+    float: right;
+    font-family: 'iconfont';
+    padding-right: 7px;
+    line-height: 31px;
+}
+
+.dropdown:hover .dd {
+    display: block;
+}
+
 
