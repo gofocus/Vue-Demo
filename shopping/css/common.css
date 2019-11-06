@@ -25,6 +25,8 @@
     color: red;
 }
 
+/*---------shortcut------------*/
+
 .shortcut {
     height: 31px;
     background-color: #eee;
@@ -58,37 +60,57 @@
     padding: 0 7px;
 }
 
+/*---------header------------*/
+
 .header {
-    /*height: 82px;*/
-    padding-top: 27px ;
-    padding-bottom: 20px;
     position: relative;
+    padding-top: 27px;
+    height: 100px;
 }
 
-.search-container {
-    height: 35px;
-    width: 538px;
+
+.search,
+.hotwords {
     position: absolute;
     left: 50%;
     margin-left: -269px;
+    height: 35px;
+    width: 538px;
+}
+
+.hotwords {
+    bottom: 0;
 }
 
 .logo,
-.search-container,
-.cart,
 .search-input,
-.search-button{
+.search-button {
     float: left;
 }
 
+.logo {
+    height: 61px;
+    width: 171px;
+}
+
+.logo a {
+    display: block;
+    height: 61px;
+    width: 171px;
+    background: url("../images/logo.png") no-repeat;
+    font-size: 0;
+}
+
 .search-input {
+    /*float: left;*/
     width: 455px;
     height: 35px;
     border: 1px solid #b1191a;
-    padding-left: 7px;
+    padding-left: 10px;
 }
 
 .search-button {
+    /*float: left;*/
     width: 83px;
     height: 35px;
     background-color: #b1191a;
@@ -96,8 +118,34 @@
     font-size: 16px;
 }
 
-.search-link a {
+.hotwords a {
+    float: left;
     padding: 7px 12px 0;
     font-size: 12px;
-    float: left;
 }
+
+.cart {
+    position: absolute;
+    right: 60px;
+    top: 25px;
+    width: 140px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid #dfdfdf;
+    background-color: #f7f7f7;
+}
+
+.count {
+    position: absolute;
+    top: -6px;
+    left: 105px;
+    height: 14px;
+    padding: 0 5px;
+    /*会继承父元素的行高，覆盖掉*/
+    line-height: 14px;
+    color: #fff;
+    background-color: #e60012;
+    border-radius: 7px 7px 7px 0;
+}
+
