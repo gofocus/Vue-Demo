@@ -1,0 +1,64 @@
+
+
+
+.main {
+    margin-left: 220px;
+    background-color: skyblue;
+    height: 465px;
+}
+
+
+.carousel {
+    float: left;
+    width: 721px;
+    height: 100%;
+    background-color: pink;
+    padding-right: 10px;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+}
+
+.newsflash {
+    float: right;
+    width: 258px;
+    height: 100%;
+}
+
+.newsflash1 {
+    height: 164px;
+    background-color: #00c244;
+    /*width: 100%;*/
+    border: 1px solid;
+    border-bottom: none;
+
+}
+.newsflash2 {
+    height: 210px;
+    background-color: gold;
+    /*width: 100%;*/
+}
+
+.newsflash1-title {
+    height: 33px;
+    border-bottom: 1px dashed;
+    font-size: 14px;
+    line-height: 33px;
+}
+
+.newsflash1-content {
+}
+
+
+
+
+
+
+
+
+
+
+
+
