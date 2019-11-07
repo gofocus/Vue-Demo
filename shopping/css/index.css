@@ -75,7 +75,9 @@
 }
 
 .newsflash2 li a:hover {
+    /*position: relative;*/
     color: #666;
+    border: 1px solid red;
 }
 
 .newsflash2 span {
@@ -168,15 +170,16 @@
     height: 363px;
 }
 
-.tab_list_item>div {
+.tab_list_item > div {
     float: left;
     text-align: center;
 }
 
-.tab_list_item>div {
+.tab_list_item > div {
     height: 363px;
 
 }
+
 .tab_list_item div:nth-child(1) {
     width: 210px;
     background-color: #f9f9f9;
@@ -185,6 +188,10 @@
 .tab_list_item div:nth-child(2) {
     width: 329px;
     background-color: #aed6d8;
+
+}
+
+.tab_list_item div:nth-child(2) a {
     color: #066c7d;
 }
 
@@ -199,32 +206,45 @@
 .tab_list_item div:nth-child(5) {
     width: 219px;
 }
-.tab_list_item1{
-    text-align: center;
-}
 
 .tab_list_item1 img {
     margin-top: 20px;
 }
+
 .tab_list_item1 ul {
     margin: 0 20px 20px;
 }
 
-.tab_list_item1 ul li{
+.tab_list_item1 ul li {
     display: inline-block;
     width: 75px;
     margin-top: 10px;
-    text-align: center;
     border-bottom: 1px solid #ededed;
 }
 
 .tab_list_item1 ul li:nth-child(2n) {
     margin-left: 15px;
 }
-.tab_list_item1 ul li a {
-}
 
 .tab_list_item2 h4 {
     margin-top: 40px;
     margin-bottom: 30px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
