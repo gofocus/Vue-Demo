@@ -2,9 +2,7 @@
 .main {
     margin-left: 220px;
     padding-top: 15px;
-    /*background-color: skyblue;*/
     height: 465px;
-    background-color: #ebebeb;
 }
 
 .carousel {
@@ -93,6 +91,140 @@
     width: 100%;
 }
 
+/*--------------------recommend-----------------*/
 
+.recommend {
+    width: 100%;
+    float: left;
+    height: 163px;
+    margin-top: 10px;
+    background-color: pink;
+    margin-bottom: 20px;
+}
 
+.recommend-title {
+    float: left;
+    position: relative;
+    width: 206px;
+    height: 100%;
+    background-color: #5c5251;
+    text-align: center;
+    color: #fff;
+}
 
+.recommend-title .iconfont {
+    font-size: 80px;
+}
+
+.recommend-title h3 {
+    margin-top: -15px;
+}
+
+.recommend-content {
+    float: left;
+    height: 100%;
+}
+
+.recommend-content li {
+    float: left;
+    height: 100%;
+}
+
+.recommend-content li a {
+    display: inline-block;
+    width: 248px;
+    height: 100%;
+}
+
+/*--------------------floor-------------------*/
+
+.floor-title {
+    position: relative;
+    border-bottom: 2px solid #c81623;
+    font-size: 18px;
+    color: #c81623;
+    padding-bottom: 2px;
+}
+
+.floor-title ul {
+    position: absolute;
+    bottom: 2px;
+    right: 0;
+}
+
+.floor-title ul li {
+    float: left;
+    font-size: 12px;
+}
+
+.floor-title ul li:nth-child(2n) {
+    width: 1px;
+    height: 10px;
+    background-color: #999999;
+    margin: 5px 10px 0;
+}
+
+.floor-content {
+    height: 363px;
+}
+
+.tab_list_item>div {
+    float: left;
+    text-align: center;
+}
+
+.tab_list_item>div {
+    height: 363px;
+
+}
+.tab_list_item div:nth-child(1) {
+    width: 210px;
+    background-color: #f9f9f9;
+}
+
+.tab_list_item div:nth-child(2) {
+    width: 329px;
+    background-color: #aed6d8;
+    color: #066c7d;
+}
+
+.tab_list_item div:nth-child(3) {
+    width: 221px;
+}
+
+.tab_list_item div:nth-child(4) {
+    width: 221px;
+}
+
+.tab_list_item div:nth-child(5) {
+    width: 219px;
+}
+.tab_list_item1{
+    text-align: center;
+}
+
+.tab_list_item1 img {
+    margin-top: 20px;
+}
+.tab_list_item1 ul {
+    margin: 0 20px 20px;
+}
+
+.tab_list_item1 ul li{
+    display: inline-block;
+    width: 75px;
+    margin-top: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ededed;
+}
+
+.tab_list_item1 ul li:nth-child(2n) {
+    margin-left: 15px;
+}
+.tab_list_item1 ul li a {
+}
+
+.tab_list_item2 h4 {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
