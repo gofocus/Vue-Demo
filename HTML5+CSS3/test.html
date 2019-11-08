@@ -28,7 +28,7 @@
         }
 
         input:hover {
-            transform:translateX(50%);
+            transform: translateX(50%);
         }
 
         .jvzhong {
@@ -75,7 +75,35 @@
             transform: rotate(225deg);
         }
 
-        /*-----------------------------------------------------------------*/
+        /*------------------------------旋转案例-----------------------------------*/
+
+        .rotate2 {
+            width: 100px;
+            height: 100px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        .rotate3 {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            transform-origin: bottom left;
+            transition: all 1s;
+            transform: rotate(90deg);
+        }
+
+        .rotate2:hover .rotate3 {
+            transform: rotate(0deg);
+        }
+
+        .scale_img {
+            transition: all 0.1s;
+        }
+
+        .scale_img:hover {
+            transform: scale(1.1);
+        }
 
     </style>
 </head>
@@ -85,14 +113,26 @@
     <div class="t2"></div>
 </div>
 
-<input type="text" name="" >
-<input type="password" name="" >
+<input type="text" name="">
+<input type="password" name="">
 
 <div class="jvzhong">
     <div class="jvzhongzihezi"></div>
 </div>
 
 <div class="rotate">
+</div>
+
+<div class="rotate2">
+    <div class="rotate3"></div>
+</div>
+
+<div class="scale"></div>
+
+<br>
+
+<div style="width: 400px;height: 200px; background-color: #eee;overflow: hidden;">
+    <img src="./image/banner2.png" alt="" style="height: 100%;width: 100%;" class="scale_img">
 </div>
 
 

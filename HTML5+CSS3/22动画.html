@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <style>
+
+        @keyframes animation1 {
+            0% {
+                /*transform: translateX(0px);*/
+            }
+            25% {
+                transform: translate(700px, 0);
+            }
+            50% {
+                transform: translate(700px, 200px);
+            }
+            75% {
+                transform: translate(0, 200px);
+            }
+            to {
+                transform: translate(0, 0);
+            }
+        }
+
+        .div1 {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: #eeeeee;
+            /*animation-name: animation1;*/
+            /*animation-duration: 5s;*/
+            animation: animation1 2s ease 0s infinite alternate;
+
+        }
+
+        .div2 {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            /*animation-name: animation1;*/
+            /*animation-duration: 13s;*/
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="div2"></div>
+<div class="div1"></div>
+
+
+</body>
+</html>

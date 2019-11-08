@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>热点图</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .container {
+            position: relative;
+            background: url("./image/map.png") no-repeat;
+            width: 747px;
+            height: 616px;
+        }
+
+        .city {
+            position: absolute;
+            top: 227px;
+            right: 193px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: skyblue;
+            border-radius: 50%;
+        }
+
+        div[class^=hotspot] {
+            width: 8px;
+            height: 8px;
+            /*用box-shadow做虚幻的边框，不要用border*/
+            box-shadow: 0 0 12px #009dfd;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes expansion {
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="city">
+        <!--<img src="./image/map.png" alt="">-->
+        <div class="dot"></div>
+        <div class="hotspot"></div>
+        <div class="hotspot2"></div>
+        <div class="hotspot3"></div>
+    </div>
+</div>
+
+
+</body>
+</html>
