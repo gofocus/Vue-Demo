@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>奔跑的熊熊</title>
+    <style>
+        body {
+            background: url("./image/bg1.png") no-repeat 0 300px;
+            animation:movebg 50s linear infinite;
+        }
+
+        .bear {
+            position: absolute;
+            left: -200px;
+            top: 50%;
+            width: 200px;
+            height: 100px;
+            background: url("./image/bear.png") no-repeat;
+            /*多个动画用逗号隔开*/
+            animation: run .8s steps(8) 0s infinite, move 2s linear forwards;
+        }
+
+        @keyframes run {
+            from {
+                background-position: 0 0;
+
+            }
+
+            to {
+                background-position: -1600px 0;
+            }
+        }
+
+        /*从左边跑入屏幕，到屏幕中间停止位移*/
+        @keyframes move {
+            to {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes movebg {
+            to {
+                background-position: 100% 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bear"></div>
+
+</body>
+</html>
