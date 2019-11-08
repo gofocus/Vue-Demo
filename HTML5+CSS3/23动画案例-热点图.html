@@ -38,10 +38,32 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            animation: expansion 1.2s linear infinite;
         }
 
         @keyframes expansion {
 
+            70% {
+                width: 40px;
+                height: 40px;
+                /*scale会把shadow一起缩放，效果不好看,并且效果会出现偏移*/
+                /*transform: scale(5);*/
+                opacity: 1;
+            }
+            to {
+                width: 70px;
+                height: 70px;
+                /*淡出效果*/
+                opacity: 0;
+            }
+        }
+
+        .hotspot2 {
+            animation-delay: 0.4s !important;
+        }
+
+        .hotspot3 {
+            animation-delay: 0.8s !important;
         }
     </style>
 </head>
@@ -49,7 +71,6 @@
 
 <div class="container">
     <div class="city">
-        <!--<img src="./image/map.png" alt="">-->
         <div class="dot"></div>
         <div class="hotspot"></div>
         <div class="hotspot2"></div>
