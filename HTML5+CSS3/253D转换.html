@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D转换</title>
+    <style>
+
+        .front,
+        .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+
+        }
+
+        .back {
+            background-color: pink;
+            transform: rotateY(180deg);
+        }
+
+        .box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            /*不需要透视*/
+            /*perspective: 300px;*/
+
+            /*3d呈现属性必须加*/
+            transform-style: preserve-3d;
+            transition:1s ease;
+        }
+        .box:hover {
+            transform: rotateY(180deg);
+        }
+
+    </style>
+</head>
+<body>
+
+<!--两面盒子翻转-->
+<div class="box">
+    <div class="front">我在这儿</div>
+    <div class="back">等着你回来</div>
+</div>
+
+
+</body>
+</html>

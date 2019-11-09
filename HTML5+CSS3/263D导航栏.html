@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D导航栏</title>
+    <style>
+
+        li {
+            float: left;
+            list-style: none;
+        }
+
+        .front,
+        .bottom {
+            width: 150px;
+            height: 30px;
+            background-color: pink;
+        }
+
+        .bottom {
+            background-color: purple;
+            transform: rotateX(45deg)
+        }
+
+        .box {
+            transform-style: preserve-3d;
+            perspective: 300px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>
+        <div class="box">
+            <div class="front">啦啦啦啦</div>
+            <div class="bottom">噜噜噜啦啦啦</div>
+        </div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+</ul>
+
+</body>
+</html>
