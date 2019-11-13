@@ -5,14 +5,10 @@
     <title>3D导航栏</title>
     <style>
 
-        ul {
-            /*margin-left: 500px;*/
-        }
-
         ul li {
             list-style: none;
             float: left;
-            /*TODO 加了透视就要加float，这是为什么？*/
+            /*TODO 加了透视就要加float，否则盒子会偏斜，这是为什么？*/
             perspective: 500px;
         }
 
@@ -22,6 +18,7 @@
             /*要把父盒子的宽高定死，不然旋转的时候父盒子会被撑大*/
             width: 120px;
             height: 30px;
+            /*必须要用transform-style: preserve-3d 开启3D效果*/
             transform-style: preserve-3d;
             transition: all .5s;
 
@@ -32,6 +29,7 @@
 
         .front,
         .bottom {
+            /*不能用float*/
             position: absolute;
             left: 0;
             top: 0;
@@ -41,9 +39,9 @@
         }
 
         .front {
+            /*考虑到盒子旋转中心点的位置，要移动垂直面，而不是水平面*/
             transform: translateZ(15px);
             background-color: pink;
-            z-index: 1;
         }
 
         .box:hover {
@@ -52,12 +50,14 @@
 
         .bottom {
             background-color: purple;
+            /*旋转会同时旋转坐标轴，所以要先移动再旋转*/
+            /*要往前旋转，所以是-90deg*/
             transform: translateY(15px) rotateX(-90deg)
         }
     </style>
 </head>
 <body>
-
+<a href="https://www.bilibili.com/video/av59866479?p=49" target="_blank">B站链接</a>
 <ul>
     <li>
         <div class="box">
