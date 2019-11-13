@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转木马</title>
+    <style>
+        body {
+            perspective: 1000px;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 150px auto;
+            transform-style: preserve-3d;
+            transition: all 1s;
+            animation: rotate 10s linear forwards;
+        }
+
+
+        .container:hover {
+            /*暂停动画*/
+            animation-play-state: paused;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotateY(-360deg);
+            }
+        }
+
+        .container div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: url("image/image.jpg") no-repeat;
+        }
+
+        .container div:nth-child(1) {
+            transform: translateZ(300px);
+        }
+
+        /*位移Z轴！而不是X轴*/
+        .container div:nth-child(2) {
+            transform: rotateY(60deg) translateZ(300px);
+        }
+
+
+        .container div:nth-child(3) {
+            transform: rotateY(-60deg) translateZ(300px);
+        }
+
+        .container div:nth-child(4) {
+            transform: translateZ(-300px);
+        }
+
+        .container div:nth-child(5) {
+            transform: rotateY(120deg) translateZ(300px);
+        }
+
+        .container div:nth-child(6) {
+            transform: rotateY(-120deg) translateZ(300px);
+        }
+
+        .container div:nth-child(7) {
+            background: url("image/图层135.png") no-repeat;
+        }
+
+    </style>
+</head>
+<body>
+
+<section class="container">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</section>
+
+</body>
+</html>
