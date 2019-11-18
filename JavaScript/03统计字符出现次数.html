@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计字符出现次数</title>
+    <script>
+        const str = 'abcoefoxyozzopp';
+
+        let o = {};
+
+        for (let i = 0; i < str.length; i++) {
+            let char_ = str[i];
+            if (o[char_]) {
+                o[char_]++;
+            }
+            else {
+                o[char_] = 1;
+            }
+        }
+
+        console.log(o);
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>
