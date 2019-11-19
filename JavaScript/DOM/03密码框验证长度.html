@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>密码框验证长度</title>
+    <style>
+        p {
+            display: inline-block;
+            visibility: hidden;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<input type="password" placeholder="输入密码">
+<p>密码长度过短，至少6个字符</p>
+
+<script>
+    const input = document.querySelector('input');
+    const p = document.querySelector('p');
+    let password = input.value;
+    input.onblur = function () {
+        if (password.length < 6) {
+            p.style.visibility = 'visible';
+        }
+    };
+
+    input.onchange = function () {
+        if (password.length < 6) {
+            p.style.visibility = 'hidden';
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单全选、取消全选</title>
+</head>
+<body>
+<input type="checkbox" name="all" id="all">
+<div class="children">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+</div>
+<script>
+    const elementById = document.getElementById('all');
+    const children = document.querySelectorAll('.children input');
+
+    elementById.onclick = function () {
+        for (let i = 0; i < children.length; i++) {
+            children[i].checked = elementById.checked;
+            if (elementById.checked) {
+                flag = children.length
+            }
+            else {
+                flag = 0;
+            }
+        }
+    };
+
+
+    // 总复选框跟随子复选框状态变化
+    let flag = 0;
+
+    for (let i = 0; i < children.length; i++) {
+        children[i].onclick = function () {
+            this.checked ? flag++ : flag--;
+            elementById.checked = flag === children.length;
+        }
+    }
+
+
+</script>
+</body>
+</html>

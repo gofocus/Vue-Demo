@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分时显示图片</title>
+    <style>
+        img {
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<p></p>
+<img src="" alt="">
+<script>
+    const date1 = new Date();
+    let hour = date1.getHours();
+    let p = document.querySelector('p');
+    let img = document.querySelector('img');
+
+    if (hour < 12) {
+        p.innerHTML = '上午好';
+        img.src = 'img/上午好.jpg';
+    }
+    else if (hour < 14) {
+        p.innerHTML = '中午好';
+        img.src = 'img/中午好.jpg';
+    }
+    else {
+        p.innerHTML = '下午好';
+        img.src = 'img/下午好.jpg';
+    }
+
+</script>
+</body>
+</html>
