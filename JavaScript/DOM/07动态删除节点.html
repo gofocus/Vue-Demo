@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态删除节点</title>
+    <style>
+        li {
+            width: 200px;
+        }
+
+        li a {
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+
+<input type="text">
+<input type="button" value="发表" class="button">
+
+<ul>
+    <li>这是一条评论<a href="javascript:;" onclick="delComment(this.parentNode)">删除</a></li>
+</ul>
+
+<script>
+    document.querySelector('.button').onclick = function () {
+        let input = document.querySelector('input');
+        const ul = document.querySelector('ul');
+        let li = document.createElement('li');
+
+        li.innerHTML = input.value + `<a href="javascript:;" onclick="delComment(this.parentNode)">删除</a>`;
+        if (input.value.trim() !== '') {
+            ul.insertBefore(li, ul.children[0]);
+        }
+    }
+
+    function delComment(node) {
+        console.log(node);
+        const ul = document.querySelector('ul');
+        ul.removeChild(node);
+    }
+</script>
+</body>
+</html>

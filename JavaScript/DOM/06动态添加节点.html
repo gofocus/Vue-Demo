@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态添加节点</title>
+</head>
+<body>
+
+<input type="text">
+<input type="button" value="发表" class="button">
+
+<ul>
+</ul>
+
+<script>
+    document.querySelector('.button').onclick = function () {
+        let input = document.querySelector('input');
+        const ul = document.querySelector('ul');
+        let li = document.createElement('li');
+
+        li.innerHTML = '<p>' + input.value + '</p>';
+        if (input.value.trim() !== '') {
+            ul.insertBefore(li, ul.children[0]);
+        }
+    }
+</script>
+</body>
+</html>

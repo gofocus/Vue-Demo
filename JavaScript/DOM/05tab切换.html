@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换</title>
+    <style>
+        ul {
+            height: 30px;
+            line-height: 30px;
+            background-color: #eeeeee;
+        }
+
+        ul li {
+            overflow: hidden;
+            float: left;
+            list-style: none;
+            margin: 0 5px;
+            height: 100%;
+
+        }
+
+        ul li a {
+            display: inline-block;
+            padding: 0 10px;
+            text-decoration: none;
+            color: #000;
+            height: 100%;
+        }
+
+        /* 第一项默认显示，n从0开始，所以+2 而不是 +1 */
+        .content div:nth-child(n + 2) {
+            display: none;
+        }
+
+        .active {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <ul>
+        <li><a href="#" class="active">商品介绍</a></li>
+        <li><a href="#">参数列表</a></li>
+        <li><a href="#">评论</a></li>
+        <li><a href="#">售后保障</a></li>
+    </ul>
+</div>
+
+<div class="content">
+    <div class="p">商品介绍</div>
+    <div class="p">参数列表</div>
+    <div class="p">评论</div>
+    <div class="p">售后保障</div>
+</div>
+
+<div data-index="1"></div>
+
+<script>
+    const a = document.querySelectorAll('a');
+    const content = document.querySelectorAll('.p');
+
+    for (let i = 0; i < a.length; i++) {
+        a[i].onclick = function () {
+            for (let j = 0; j < a.length; j++) {
+                a[j].removeAttribute('class');
+                content[j].style.display = 'none';
+            }
+            this.setAttribute('class', 'active');
+            content[i].style.display = 'block';
+        }
+    }
+
+</script>
+</body>
+</html>
