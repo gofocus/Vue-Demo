@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态生成表格</title>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <table border="1" cellspacing="0" cellpadding="0" width="770px">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>科目</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        let data = [{
+            name: '魏璎珞',
+            subject: 'JavaScript',
+            score: 100
+        }, {
+            name: '弘历',
+            subject: 'JavaScript',
+            score: 98
+        }, {
+            name: '傅恒',
+            subject: 'JavaScript',
+            score: 99
+        }, {
+            name: '明玉',
+            subject: 'JavaScript',
+            score: 88
+        }, {
+            name: '大猪蹄子',
+            subject: 'JavaScript',
+            score: 0
+        }];
+
+        let tbody = document.querySelector('tbody');
+        for (let i = 0; i < data.length; i++) {
+            let tr = document.createElement('tr');
+            tbody.appendChild(tr);
+
+           /* for (let j = 0; j < 4; j++) {
+                tbody.children[i].appendChild(document.createElement('td'));
+            }
+            tbody.children[i].children[0].innerHTML = data[i].name;
+            tbody.children[i].children[1].innerHTML = data[i].subject;
+            tbody.children[i].children[2].innerHTML = data[i].score;
+            */
+
+           // 相比上面，这种写法逻辑更清晰
+           for(let key in data[i]){
+               let td = document.createElement('td');
+               td.innerHTML = data[i][key];
+               tr.appendChild(td);
+           }
+        }
+
+        // 单独创建“删除”按钮
+        for (let i = 0; i < tbody.children.length; i++) {
+            td = document.createElement('td');
+            td.innerHTML = `<a href="javascript:">删除</a>`;
+            tbody.children[i].appendChild(td);
+            // tbody.children[i].setAttribute('class',i)
+        }
+
+        // 删除按钮绑定事件处理程序
+        let as = document.querySelectorAll('a');
+        for (let i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                // 如果根据索引序号来删除节点，每次删除索引都会变化，导致删错数据
+
+                // 可以通过给每个tr设置单独的类名来定位要删除的tr
+                // let tr = document.getElementsByClassName(i)[0];
+
+                // 但通过父节点的关系可以快速找到要删除的节点
+                let tr = this.parentNode.parentNode;
+                tbody.removeChild(tr);
+            }
+        }
+
+    </script>
+</body>
+</html>
