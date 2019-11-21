@@ -18,9 +18,10 @@
 <script>
     let img = document.querySelector('img');
 
-    document.addEventListener('mousemove',function (e) {
-        let x = e.clientX;
-        let y = e.clientY;
+    document.addEventListener('mousemove', function (e) {
+        // 不要忘了加单位
+        let x = e.clientX + 'px';
+        let y = e.clientY + 'px';
         img.style.top = y;
         img.style.left = x;
     })

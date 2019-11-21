@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>接收参数页面</title>
+</head>
+<body>
+<script>
+
+    let params = location.search;   //?username=andy&password=1234
+    params.substring(1);
+    let array = params.split('&');
+    console.log(array);
+
+</script>
+</body>
+</html>

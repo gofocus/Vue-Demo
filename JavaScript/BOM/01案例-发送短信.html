@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-发送短信</title>
+    <style>
+
+
+    </style>
+</head>
+<body>
+
+<input type="text">
+<button>发送短信</button>
+<script>
+    let button = document.querySelector('button');
+    button.addEventListener('click', function (e) {
+        let countDown = 5;
+        button.disabled = true;
+        button.innerHTML = "剩余" + countDown + "秒";
+        let count = setInterval(function () {
+            button.innerHTML = "剩余" + --countDown + "秒";
+            if (!countDown) {
+                button.disabled = false;
+                clearInterval(count);
+                button.innerHTML = '发送短信';
+            }
+        }, 1000);
+    })
+
+</script>
+</body>
+</html>
