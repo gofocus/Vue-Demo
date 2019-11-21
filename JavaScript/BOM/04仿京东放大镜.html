@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿京东放大镜</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .preview_img {
+            position: relative;
+            height: 398px;
+            border: 1px solid #ccc;
+            width: 400px;
+        }
+
+        .mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background: #FEDE4F;
+            opacity: .5;
+            border: 1px solid #ccc;
+            cursor: move;
+        }
+
+        .big {
+            display: none;
+            position: absolute;
+            left: 410px;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="preview_img">
+    <img src="img/s3.png" alt="" class="smallImg">
+    <div class="mask"></div>
+    <div class="big">
+        <img src="img/big.jpg" alt="" class="bigImg">
+    </div>
+</div>
+
+<script>
+    let preview_img = document.querySelector('.preview_img');
+    let smallImg = document.querySelector('.smallImg');
+    let bigImg = document.querySelector('.bigImg');
+    let big = document.querySelector('.big');
+    let mask = document.querySelector('.mask');
+
+    // 这个事件要给大盒子加，如果给smallImg加，由于mask元素和smallImg部分重合，会导致mouseover的对象判断混乱,
+    // 移动鼠标时对于smallImg会交替出现mouseover和mouseleave事件
+    preview_img.addEventListener('mouseover', function () {
+        mask.style.display = 'block';
+        big.style.display = 'block';
+    });
+    preview_img.addEventListener('mouseleave', function () {
+        mask.style.display = 'none';
+        big.style.display = 'none';
+    });
+
+    preview_img.addEventListener('mousemove', function (e) {
+        let offsetX = this.offsetLeft;
+        let offsetY = this.offsetTop;
+        let x = e.pageX - offsetX;
+        let y = e.pageY - offsetY;
+        let maskX = x - mask.offsetWidth / 2;
+        let maskY = y - mask.offsetHeight / 2;
+        let maskMax = this.offsetWidth - mask.offsetWidth;
+        if (maskX <= 0) {
+            maskX = 0;
+        }
+        else if (maskX >= maskMax) {
+            maskX = maskMax;
+        }
+        if (maskY <= 0) {
+            maskY = 0;
+        }
+        else if (maskY >= maskMax) {
+            maskY = maskMax;
+        }
+        mask.style.left = maskX + 'px';
+        mask.style.top = maskY + 'px';
+    })
+
+
+</script>
+</body>
+</html>
