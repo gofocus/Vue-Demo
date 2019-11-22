@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08轮播图</title>
+    <script src="animate.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="box">
+
+    <span class="left_arrow arrow">&lt;</span>
+    <span class="right_arrow arrow">&gt;</span>
+    <ul class="focus">
+        <li><a href=""><img src="img/focus2.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/focus1.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/focus3.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/focus.jpg" alt=""></a></li>
+    </ul>
+    <div class="circle"></div>
+</div>
+
+
+<script>
+    const box = document.querySelector('.box');
+    const focus = document.querySelector('.focus');
+    const arrow = document.querySelectorAll('.arrow');
+    const circle = document.querySelector('.circle');
+    let circles;
+    box.addEventListener('mouseenter', function () {
+        arrow[0].style.display = 'inline-block';
+        arrow[1].style.display = 'inline-block';
+    });
+    box.addEventListener('mouseleave', function () {
+        arrow[0].style.display = 'none';
+        arrow[1].style.display = 'none';
+    });
+
+    //根据轮播图的数量，动态添加小圆圈
+    for (let i = 0; i < focus.children.length; i++) {
+        let child = document.createElement('a');
+        child.href = 'javascript:';
+
+        //生成小圆圈的时候就绑定好事件
+        child.addEventListener('click', function (e) {
+            // 选中的小圆圈设置单独的样式class
+            for (let j = 0; j < circles.length; j++) {
+                circles[j].className = '';
+            }
+            this.className = 'current';
+
+            // 点击小圆圈轮播图组件显示对应的图片
+            // 要移动的元素必须设置定位
+            animate(focus, -(box.offsetWidth) * i);
+        });
+
+
+        circle.appendChild(child);
+    }
+
+    circles = document.querySelectorAll('.circle a');
+
+
+</script>
+
+</body>
+</html>

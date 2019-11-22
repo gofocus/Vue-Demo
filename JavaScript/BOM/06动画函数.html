@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画函数</title>
+    <script src="animate.js"></script>
+    <style>
+        .box {
+            /*要移动的元素必须设置定位*/
+            position: absolute;
+            left: 0;
+            width: 300px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<button class="btn1">走</button>
+<button class="btn2">回</button>
+<div class="box"></div>
+
+<script>
+
+    let btn1 = document.querySelector('.btn1');
+    let btn2 = document.querySelector('.btn2');
+    let box = document.querySelector('.box');
+
+    btn1.addEventListener('click', function () {
+        // 要移动的元素必须设置定位
+        animate(box, 600);
+    });
+    btn2.addEventListener('click', function () {
+        animate(box, 0);
+    })
+
+
+</script>
+</body>
+</html>

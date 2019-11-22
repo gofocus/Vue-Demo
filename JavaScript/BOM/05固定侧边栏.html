@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>固定侧边栏</title>
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="slider-bar">
+    <span class="goBack">返回顶部</span>
+</div>
+<div class="header w">头部区域</div>
+<div class="banner w">banner区域</div>
+<div class="main w">主体部分</div>
+<script>
+    let sliderBar = document.querySelector('.slider-bar');
+    let banner = document.querySelector('.banner');
+    let main = document.querySelector('.main');
+    // sliderBar.offsetTop 必须在事件处理函数外面计算，因为进入事件处理函数后sliderBar会变成fixed定位top也改变了，每次滚动sliderBar.offsetTop都会重新计算，
+    let sliderBarTop = sliderBar.offsetTop - banner.offsetTop;
+    document.addEventListener('scroll', function (e) {
+        if (window.pageYOffset > banner.offsetTop) {
+            sliderBar.style.position = 'fixed';
+            sliderBar.style.top = sliderBarTop + 'px';
+        }
+        else {
+            // 取消固定定位
+            sliderBar.style.position = 'absolute';
+
+            // sliderBar.style.top = sliderOffSetTop + 'px';
+            // 直接设为空字符串更方便。原理：设为空字符串后，该top行内样式失效，原来样式表中的top样式重新生效
+            sliderBar.style.top = '';
+        }
+
+
+        if (window.pageYOffset > main.offsetTop) {
+            sliderBar.firstElementChild.style.display = 'block';
+        }
+        else {
+            sliderBar.firstElementChild.style.display = 'none';
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

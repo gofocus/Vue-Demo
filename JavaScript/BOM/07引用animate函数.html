@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07引用animate函数</title>
+    <script src="animate.js"></script>
+    <style>
+        .slide {
+            position: fixed;
+            right: 0;
+            top: 200px;
+            width: 40px;
+            height: 40px;
+            color: whitesmoke;
+            background-color: pink;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+
+        }
+
+        .slide span {
+
+        }
+
+        .con {
+            position: absolute;
+            top: 0;
+            height: 40px;
+            width: 200px;
+            text-align: center;
+            background-color: pink;
+            z-index: -1;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="slide">
+    <span>←</span>
+    <div class="con">问题反馈</div>
+</div>
+
+
+<script>
+    let con = document.querySelector('.con');
+    let slide = document.querySelector('.slide');
+    slide.addEventListener('mouseenter', function (e) {
+        animate(con, -160,function () {
+            slide.children[0].innerHTML = '→';
+        });
+    });
+    slide.addEventListener('mouseleave', function (e) {
+        animate(con, 0,function () {
+            slide.children[0].innerHTML = '←';
+        });
+    });
+</script>
+
+</body>
+</html>
