@@ -26,8 +26,15 @@
     const box = document.querySelector('.box');
     const focus = document.querySelector('.focus');
     const arrow = document.querySelectorAll('.arrow');
+    const left_arrow = document.querySelector('.left_arrow');
+    const right_arrow = document.querySelector('.right_arrow');
     const circle = document.querySelector('.circle');
+
     let circles;
+    let boxWidth = box.offsetWidth;
+    let imgCount = focus.children.length;
+
+
     box.addEventListener('mouseenter', function () {
         arrow[0].style.display = 'inline-block';
         arrow[1].style.display = 'inline-block';
@@ -36,6 +43,12 @@
         arrow[0].style.display = 'none';
         arrow[1].style.display = 'none';
     });
+
+    // 节流阀，控制动画完毕后才开始下一个动画
+    let flag = true;
+/*    function f() {
+        flag = true;
+    }*/
 
     //根据轮播图的数量，动态添加小圆圈
     for (let i = 0; i < focus.children.length; i++) {
@@ -52,14 +65,48 @@
 
             // 点击小圆圈轮播图组件显示对应的图片
             // 要移动的元素必须设置定位
-            animate(focus, -(box.offsetWidth) * i);
+            animate(focus, -(boxWidth) * i);
         });
-
 
         circle.appendChild(child);
     }
-
     circles = document.querySelectorAll('.circle a');
+
+
+    right_arrow.addEventListener('click', function (e) {
+        if (flag) {
+            flag = false;
+            let offSet = focus.offsetLeft - boxWidth;
+            if (Math.abs(offSet) > (imgCount - 1) * boxWidth) {
+                offSet = 0;
+            }
+            animate(focus, offSet, function () {
+                flag = true;
+            });
+            // TODO 下面这种写法无效
+            // animate(focus, offSet, f());
+        }
+    });
+    left_arrow.addEventListener('click', function (e) {
+        if (flag) {
+            flag = false;
+            let offSet = focus.offsetLeft + boxWidth;
+            if (offSet > 0) {
+                offSet = -(imgCount - 1) * boxWidth
+            }
+            animate(focus, offSet, function () {
+                flag = true;
+            });
+        }
+    });
+
+    //禁止鼠标选中小箭头文本
+    right_arrow.addEventListener('selectstart', function (e) {
+        e.preventDefault();
+    });
+    left_arrow.addEventListener('selectstart', function (e) {
+        e.preventDefault();
+    })
 
 
 </script>
