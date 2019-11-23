@@ -120,7 +120,7 @@
 
       // register instance in init hook
       // in case kept-alive component be actived when routes changed
-      data.hook.init = function (vnode) {
+      Tab.init = function (vnode) {
         if (vnode.data.keepAlive &&
           vnode.componentInstance &&
           vnode.componentInstance !== matched.instances[name]
