@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>固定侧边栏</title>
+    <script src="animate.js"></script>
+
     <style>
         .slider-bar {
             position: absolute;
@@ -43,7 +45,7 @@
 </head>
 <body>
 <div class="slider-bar">
-    <span class="goBack">返回顶部</span>
+    <span class="goBack"><a href="javascript:">返回顶部</a></span>
 </div>
 <div class="header w">头部区域</div>
 <div class="banner w">banner区域</div>
@@ -52,6 +54,9 @@
     let sliderBar = document.querySelector('.slider-bar');
     let banner = document.querySelector('.banner');
     let main = document.querySelector('.main');
+    let goBack = document.querySelector('.goBack');
+    let body = document.querySelector('body');
+
     // sliderBar.offsetTop 必须在事件处理函数外面计算，因为进入事件处理函数后sliderBar会变成fixed定位top也改变了，每次滚动sliderBar.offsetTop都会重新计算，
     let sliderBarTop = sliderBar.offsetTop - banner.offsetTop;
     document.addEventListener('scroll', function (e) {
@@ -76,6 +81,11 @@
             sliderBar.firstElementChild.style.display = 'none';
         }
 
+    });
+
+    goBack.addEventListener('click',function () {
+        // scroll(0, 0);
+        animateY(window, 0);
     })
 
 </script>
