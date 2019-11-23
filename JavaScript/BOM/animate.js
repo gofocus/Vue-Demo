@@ -6,9 +6,12 @@ function animate(obj, target, callback) {
 
         if (obj.offsetLeft === target) {
             clearInterval(obj.timer);
+/*
             if (callback) {
                 callback();
             }
+*/
+            callback && callback(); // 逻辑中断，简单写法
         }
         let step = (target - obj.offsetLeft) / 5;
         step = step > 0 ? Math.ceil(step) : Math.floor(step);
