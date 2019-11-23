@@ -17,6 +17,7 @@
         <li><a href=""><img src="img/focus1.jpg" alt=""></a></li>
         <li><a href=""><img src="img/focus3.jpg" alt=""></a></li>
         <li><a href=""><img src="img/focus.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/focus1.jpg" alt=""></a></li>
     </ul>
     <div class="circle"></div>
 </div>
@@ -33,7 +34,8 @@
     let circles;
     let boxWidth = box.offsetWidth;
     let imgCount = focus.children.length;
-
+    // 记录轮播图当前图片的顺序
+    let num = 1;
 
     box.addEventListener('mouseenter', function () {
         arrow[0].style.display = 'inline-block';
@@ -46,9 +48,9 @@
 
     // 节流阀，控制动画完毕后才开始下一个动画
     let flag = true;
-/*    function f() {
-        flag = true;
-    }*/
+    /*    function f() {
+            flag = true;
+        }*/
 
     //根据轮播图的数量，动态添加小圆圈
     for (let i = 0; i < focus.children.length; i++) {
@@ -58,10 +60,8 @@
         //生成小圆圈的时候就绑定好事件
         child.addEventListener('click', function (e) {
             // 选中的小圆圈设置单独的样式class
-            for (let j = 0; j < circles.length; j++) {
-                circles[j].className = '';
-            }
-            this.className = 'current';
+            num = i + 1;
+            setCurrent(num);
 
             // 点击小圆圈轮播图组件显示对应的图片
             // 要移动的元素必须设置定位
@@ -72,10 +72,13 @@
     }
     circles = document.querySelectorAll('.circle a');
 
-
+    // 点击箭头切换到下一张轮播图
     right_arrow.addEventListener('click', function (e) {
         if (flag) {
             flag = false;
+            num = (++num % (imgCount + 1)) === 0 ? 1 : num;
+            setCurrent(num);
+
             let offSet = focus.offsetLeft - boxWidth;
             if (Math.abs(offSet) > (imgCount - 1) * boxWidth) {
                 offSet = 0;
@@ -83,13 +86,17 @@
             animate(focus, offSet, function () {
                 flag = true;
             });
-            // TODO 下面这种写法无效
+            // TODO 下面这种写法为什么无效？
             // animate(focus, offSet, f());
         }
     });
+    // 点击箭头切换到上一张轮播图
     left_arrow.addEventListener('click', function (e) {
         if (flag) {
             flag = false;
+            num = (num === 1 ? imgCount : --num);
+            setCurrent(num);
+
             let offSet = focus.offsetLeft + boxWidth;
             if (offSet > 0) {
                 offSet = -(imgCount - 1) * boxWidth
@@ -106,8 +113,15 @@
     });
     left_arrow.addEventListener('selectstart', function (e) {
         e.preventDefault();
-    })
+    });
 
+    // 给当前轮播图对应的小圆圈设置样式
+    function setCurrent(num) {
+        for (let j = 0; j < circles.length; j++) {
+            circles[j].className = '';
+        }
+        circles[num - 1].className = 'current';
+    }
 
 </script>
 

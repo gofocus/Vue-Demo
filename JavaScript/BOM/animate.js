@@ -10,10 +10,10 @@ function animate(obj, target, callback) {
                 callback();
             }
         }
-        let step = (target - obj.offsetLeft) / 10;
+        let step = (target - obj.offsetLeft) / 5;
         step = step > 0 ? Math.ceil(step) : Math.floor(step);
         obj.style.left = obj.offsetLeft + step + 'px';
 
-    }, 15)
+    }, 10)
 
 }
