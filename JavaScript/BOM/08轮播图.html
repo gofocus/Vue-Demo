@@ -17,7 +17,7 @@
         <li><a href=""><img src="img/focus1.jpg" alt=""></a></li>
         <li><a href=""><img src="img/focus3.jpg" alt=""></a></li>
         <li><a href=""><img src="img/focus.jpg" alt=""></a></li>
-        <li><a href=""><img src="img/focus1.jpg" alt=""></a></li>
+        <!--<li><a href=""><img src="img/focus1.jpg" alt=""></a></li>-->
     </ul>
     <div class="circle"></div>
 </div>
@@ -56,16 +56,24 @@
     for (let i = 0; i < focus.children.length; i++) {
         let child = document.createElement('a');
         child.href = 'javascript:';
+        if (i === 0) {
+            child.className = 'current';
+        }
 
         //生成小圆圈的时候就绑定好事件
         child.addEventListener('click', function (e) {
+            clearInterval(timer);
+
             // 选中的小圆圈设置单独的样式class
             num = i + 1;
             setCurrent(num);
 
             // 点击小圆圈轮播图组件显示对应的图片
             // 要移动的元素必须设置定位
-            animate(focus, -(boxWidth) * i);
+            animate(focus, -(boxWidth) * i, function () {
+                autoPlay();
+            });
+            console.log(num, 'num');
         });
 
         circle.appendChild(child);
@@ -76,6 +84,7 @@
     right_arrow.addEventListener('click', function (e) {
         if (flag) {
             flag = false;
+            clearInterval(timer);
             num = (++num % (imgCount + 1)) === 0 ? 1 : num;
             setCurrent(num);
 
@@ -85,14 +94,17 @@
             }
             animate(focus, offSet, function () {
                 flag = true;
+                autoPlay();
             });
             // TODO 下面这种写法为什么无效？
             // animate(focus, offSet, f());
+
         }
     });
     // 点击箭头切换到上一张轮播图
     left_arrow.addEventListener('click', function (e) {
         if (flag) {
+            clearInterval(timer);
             flag = false;
             num = (num === 1 ? imgCount : --num);
             setCurrent(num);
@@ -103,6 +115,7 @@
             }
             animate(focus, offSet, function () {
                 flag = true;
+                autoPlay();
             });
         }
     });
@@ -122,6 +135,22 @@
         }
         circles[num - 1].className = 'current';
     }
+
+
+    // 自动播放轮播图
+    let timer;
+
+    function autoPlay() {
+        timer = setInterval(function () {
+            /*num = (++num % (imgCount + 1)) === 0 ? 1 : num;
+            let offSet = -(num - 1) * boxWidth;
+            animate(focus, offSet);
+            setCurrent(num);*/
+            right_arrow.click() // 更简单的自动播放轮播图,手动调用点击事件
+        }, 2000)
+    }
+
+    autoPlay();
 
 </script>
 
