@@ -48,9 +48,11 @@
 
     // 节流阀，控制动画完毕后才开始下一个动画
     let flag = true;
-    /*    function f() {
-            flag = true;
-        }*/
+
+    function f() {
+        flag = true;
+        autoPlay();
+    }
 
     //根据轮播图的数量，动态添加小圆圈
     for (let i = 0; i < focus.children.length; i++) {
@@ -92,12 +94,13 @@
             if (Math.abs(offSet) > (imgCount - 1) * boxWidth) {
                 offSet = 0;
             }
-            animate(focus, offSet, function () {
+            /*animate(focus, offSet, function () {
                 flag = true;
                 autoPlay();
-            });
-            // TODO 下面这种写法为什么无效？
+            });*/
+            // 下面这种写法为什么无效？
             // animate(focus, offSet, f());
+            animate(focus, offSet, f);  // 不能加括号，加括号会立即调用函数
 
         }
     });
