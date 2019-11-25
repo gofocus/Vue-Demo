@@ -13,6 +13,7 @@ class Tab {
         this.lis = document.querySelectorAll('li');
         this.sections = document.querySelectorAll('section');
         this.icons = document.querySelectorAll('.icon-guanbi');
+        this.spans = document.querySelectorAll('li span:first-child');
 
         for (let i = 0; i < this.lis.length; i++) {
             this.lis[i].index = i;
@@ -24,9 +25,15 @@ class Tab {
                                 _this.toggleTab(i);
                             }
             */
-
             // ×图标绑定删除事件
             this.icons[i].onclick = this.removeTab;
+            // 双击编辑tab名称和section内容
+            this.spans[i].onselectstart = function (e) {
+                e.preventDefault();
+            };
+            this.spans[i].ondblclick = this.editTab;
+
+
         }
 
         // +号按钮绑定点击事件添加tab
@@ -81,6 +88,34 @@ class Tab {
     }
 
     editTab() {
+        let _this = this;
+        let content = this.innerText;
+        this.innerHTML = `<input type="text" value="${content}">`;
+        let contentInput = this.firstElementChild;
+        // contentInput.focus();
+        contentInput.select();
+        contentInput.onblur = function () {
+            console.log('blur');
+            _this.innerHTML = contentInput.value;
+        }
+
+
+     /*   let i = this.index;
+        let tabSpan = this.firstElementChild;
+        let content = tabSpan.innerText;
+        let contentInput = document.createElement('input');
+        _this.lis[i].ondblclick = null;
+        tabSpan.style.display = 'none';
+        contentInput.value = content;
+        this.insertAdjacentElement('afterbegin', contentInput);
+        contentInput.focus();
+        contentInput.onblur = function () {
+            console.log(contentInput.value);
+            tabSpan.innerText = contentInput.value;
+            tabSpan.style.display = 'block';
+            _this.lis[i].removeChild(contentInput);
+            _this.init();
+        }*/
 
     }
 
