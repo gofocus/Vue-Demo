@@ -152,6 +152,8 @@
         constructor() {
             this.main = document.querySelector('ul');
             this.lis = document.querySelectorAll('li');
+            this.section = document.querySelector('.tabscon');
+            this.tabadd = document.querySelector('.tabadd');
             this.sections = document.querySelectorAll('section');
             _this = this;
             this.init();
@@ -164,14 +166,19 @@
                 // toggleTab不能加(),否则会直接调用
                 // this.lis[i].onclick = this.toggleTab();
                 this.lis[i].onclick = this.toggleTab;
-                /*
-                                // TODO 如果要传参怎么办？
-                                // 思路1（待确认）
-                                this.lis[i].onclick = function () {
-                                    _this.toggleTab(i);
-                                }
-                */
+/*
+                // TODO 如果要传参怎么办？
+                // 思路1（待确认）
+                this.lis[i].onclick = function () {
+                    _this.toggleTab(i);
+                }
+*/
             }
+
+            // +号按钮绑定点击事件添加tab
+            this.tabadd.addEventListener('click', this.addTab);
+            // this.tabadd.onclick = this.addTab;
+
         }
 
         toggleTab(i) {
@@ -184,7 +191,18 @@
 
 
         addTab() {
+            // 方法体内的this要换成_this,因为函数调用者始终是HTMLElement对象
+            let newTab = document.createElement('li');
+            newTab.innerHTML = `<span>newTab</span><span class="iconfont icon-guanbi"></span>`;
+            newTab.index = _this.lis.length;
+            _this.main.appendChild(newTab);
+            _this.lis = document.querySelectorAll('li');
+            newTab.addEventListener('click', _this.toggleTab);
 
+            let newSection = document.createElement('section');
+            newSection.innerHTML = 'New Tab content' + Math.random();
+            _this.section.appendChild(newSection);
+            _this.sections = document.querySelectorAll('section');
         }
 
         removeTab() {
