@@ -18,23 +18,18 @@ class Tab {
         for (let i = 0; i < this.lis.length; i++) {
             this.lis[i].index = i;
             this.lis[i].onclick = this.toggleTab;
-            /*
-                            // TODO 如果要传参怎么办？
-                            // 思路1（待确认）
-                            this.lis[i].onclick = function () {
-                                _this.toggleTab(i);
-                            }
-            */
             // ×图标绑定删除事件
             this.icons[i].onclick = this.removeTab;
-            // 双击编辑tab名称和section内容
-            this.spans[i].onselectstart = function (e) {
+            // 双击tab或section可以编辑内容
+            this.lis[i].onselectstart = function (e) {
                 e.preventDefault();
             };
             this.spans[i].ondblclick = this.editTab;
+            this.sections[i].ondblclick = this.editTab
 
 
         }
+
 
         // +号按钮绑定点击事件添加tab
         this.tabadd.onclick = this.addTab;
@@ -88,35 +83,19 @@ class Tab {
     }
 
     editTab() {
-        let _this = this;
+        let _this = this;   // 调用对象是span或者section
         let content = this.innerText;
         this.innerHTML = `<input type="text" value="${content}">`;
         let contentInput = this.firstElementChild;
-        // contentInput.focus();
         contentInput.select();
+        contentInput.onkeyup = function (e) {
+            if (e && e.keyCode === 13) {
+                this.blur();    // 按enter业务逻辑和blur一样，触发blur即可，不用再写一遍业务逻辑
+            }
+        };
         contentInput.onblur = function () {
-            console.log('blur');
             _this.innerHTML = contentInput.value;
-        }
-
-
-     /*   let i = this.index;
-        let tabSpan = this.firstElementChild;
-        let content = tabSpan.innerText;
-        let contentInput = document.createElement('input');
-        _this.lis[i].ondblclick = null;
-        tabSpan.style.display = 'none';
-        contentInput.value = content;
-        this.insertAdjacentElement('afterbegin', contentInput);
-        contentInput.focus();
-        contentInput.onblur = function () {
-            console.log(contentInput.value);
-            tabSpan.innerText = contentInput.value;
-            tabSpan.style.display = 'block';
-            _this.lis[i].removeChild(contentInput);
-            _this.init();
-        }*/
-
+        };
     }
 
     clearClass() {
