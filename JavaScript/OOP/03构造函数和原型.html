@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数和原型</title>
+</head>
+<body>
+
+<script>
+        function Star(uname, age) {
+            this.uname = uname;
+            this.age = age;
+        }
+
+/*        Star.prototype.sing = function () {
+            console.log('sing');
+        };
+        Star.prototype.dance = function () {
+            console.log('dance');
+        };*/
+
+        // 在原型对象上定义多个方法时，上面的写法较冗余，可以直接定义一个对象复制给prototype属性
+        Star.prototype = {
+            constructor: Star,  // constructor指回构造函数，每个prototype默认有一个属性constructor指向构造函数
+            sing: function () {
+                console.log('sing');
+            },
+            dance: function () {
+                console.log('dance');
+            }
+        };
+
+        console.log(Star.prototype);
+        console.log(Star.prototype.constructor);
+
+
+
+</script>
+</body>
+</html>
