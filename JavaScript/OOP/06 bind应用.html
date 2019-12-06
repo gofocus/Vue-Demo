@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind</title>
+</head>
+<body>
+
+<button>click me</button>
+
+<script>
+    // 点击button3秒后才能再点
+    let button = document.querySelector('button');
+
+    button.onclick = function () {
+        button.disabled = true;
+
+        setTimeout(function () {
+            this.disabled = false   // 这里的this原来指向window
+        }.bind(this), 3000)     // 函数中的this改变了指向，指向了button
+        // bind不会立即调用函数
+    };
+
+
+</script>
+</body>
+</html>

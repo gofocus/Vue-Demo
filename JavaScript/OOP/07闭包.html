@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+
+<ul>
+    <li>apple</li>
+    <li>pen</li>
+    <li>pineapple</li>
+</ul>
+</body>
+
+
+<script>
+    //点击li，输出索引
+    let lis = document.querySelector('ul').querySelectorAll('li');
+
+ /*   for (let i = 0; i < lis.length; i++) {    //let 创建了块级作用域
+        lis[i].onclick = function () {
+            console.log(i)
+        }
+    } */
+ /*   for (var i = 0; i < lis.length; i++) {
+        lis[i].onclick = function () {
+            console.log(i)      // 点击任意li都会输出3 (lis.length)
+        }
+    }*/
+
+    for (var i = 0; i < lis.length; i++) {
+
+        (function (i) {
+            lis[i].onclick = function () {
+                console.log(i)  // 闭包  创建这个函数的上下文已经消失（由立即执行函数创建），但这个函数任然存在，并且函数中引用了自用变量（既不是函数参数，又不是函数局部变量的变量）
+            }
+        })(i)
+    }
+
+
+</script>
+</html>
