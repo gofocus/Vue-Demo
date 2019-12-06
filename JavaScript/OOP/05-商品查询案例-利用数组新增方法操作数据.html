@@ -52,7 +52,7 @@
     </tbody>
 </table>
 <script>
-    // 利用新增数组方法操作数据
+    // 利用ES6新增的数组方法操作数据
     var data = [{
         id: 1,
         pname: '小米',
@@ -71,20 +71,41 @@
         price: 1999
     },];
 
-//    渲染数据到表格中
+    //    渲染数据到表格中
     let tbody = document.querySelector('tbody');
+    let data1;
 
-    data.forEach(function (val, index, array) {
-        let newTr = document.createElement('tr');
-        for (var key in val){
-            newTr.insertAdjacentHTML('beforeend',`<td>${val[key]}</td>`);
-        }
-        tbody.insertAdjacentHTML('beforeend', newTr);
+    function render(data) {
+        data.forEach(function (val, index, array) {
 
-    });
+            let newTr = document.createElement('tr');
+            let newTd;
+            for (const key in val) {
+                newTd = document.createElement('td');
+                newTd.innerHTML = val[key];
+                newTr.insertAdjacentElement('beforeend', newTd);
+            }
+            tbody.insertAdjacentElement('beforeend', newTr);
+
+        });
+    }
 
 
+    function searchByPrice() {
+        let low = document.querySelector('.start').value;
+        let high = document.querySelector('.end').value;
+        data1 = data.filter(function (element) {
+            return element.price >= low && element.price <= high;
+        });
 
+        tbody.innerHTML = '';   //清空子节点，这样最快捷方便
+        render(data1);
+    }
+
+    let btn1 = document.querySelector('.search-price');
+    btn1.addEventListener('click', searchByPrice);
+
+    render(data);
 
 </script>
 </body>
