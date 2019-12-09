@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式案例</title>
+    <style>
+
+        .wrong {
+            color: red;
+        }
+
+        .right {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+
+<input type="text"><span></span>
+
+<!--验证输入是否符合规则，配上颜色-->
+<script>
+    let input = document.querySelector('input');
+    let span = document.querySelector('span');
+    let reg = /^[a-zA-Z0-9-_]{6,16}$/;
+    input.onblur = function () {
+
+        // let value = input.value;
+        if (reg.test(this.value)) {
+            span.innerHTML = '输入合法';
+            span.className = 'right'
+        }
+        else {
+            span.innerHTML = '输入不合法';
+            span.className = 'wrong'
+        }
+    }
+
+
+</script>
+</body>
+</html>
