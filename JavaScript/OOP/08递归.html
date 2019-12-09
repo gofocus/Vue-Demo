@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>递归</title>
+</head>
+<body>
+
+<script>
+
+    // 递归求阶乘
+    function recursion(n) {
+        if (n === 1) {
+            return 1;
+        }
+        else {
+            return n * recursion(n - 1);
+        }
+
+    }
+
+    console.log(recursion(8));
+
+    // 递归求斐波那契数列
+    function Fibonacci(n) {
+        if (n === 1 || n === 2) {
+            return 1;
+        }
+        else {
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+    }
+
+    console.log(Fibonacci(6));
+    console.log(Fibonacci(7));
+    console.log(Fibonacci(8));
+    console.log(Fibonacci(9));
+
+</script>
+
+
+</body>
+</html>
