@@ -8,7 +8,6 @@
 
 
 <script>
-
     let rg3 = /[abc]/
     console.log(rg3.test('ab'));    //  true
     console.log(rg3.test('abc'));    //  true
@@ -66,7 +65,27 @@
         test = 'test!';
     }
 
-    console.log(test);
+    // console.log(test);
+
+    var arr1 = [1, 2, 3];
+    arr1.forEach(function (element) {
+        element++;
+    })
+    console.log(arr1)
+
+    function getUser(path,callback) {
+        return $.get(path,callback(info))
+    }
+
+
+    var ooo = 10;
+    var rg_var = 1
+    let rg_let = 1
+    console.log(this.ooo)   //10
+    console.log(this.rg_var)    // 1
+    console.log(this.rg_let)    // undefined
+
+
 </script>
 
 </body>

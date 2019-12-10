@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+
+
+<script>
+
+    function createCurry(func, args) {
+        console.log(func.length)
+
+    }
+
+    function check(targetString, reg, o) {
+        return reg.test(targetString);
+    }
+
+    // createCurry(check);
+/*
+    let a = 2;
+    var b = 3;
+    console.log(a);     //2
+    console.log(this.a);    //undefined
+    console.log(this.b);    //3
+    console.log(this)       //Window*/
+    var age = 100;
+    let years = 6;
+    if (age > 12) {
+        let age = 10;
+        var years = age * 3;
+    }
+
+    console.log(`${years} years`);
+</script>
+</body>
+</html>
