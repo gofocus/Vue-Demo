@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise</title>
+</head>
+<body>
+
+<script>
+
+    /*    console.log(Promise.resolve(1).then(2).then(() => 4));
+
+        var promise1 = Promise.resolve(123);
+
+        console.log(promise1);
+
+        Promise.resolve(1)
+            .then(2)
+            .then(console.log)  // 1
+            .then(() => 4)
+            .then(Promise.resolve(3))
+            .then(console.log)  // 4
+
+
+        /!*    console.log(Promise.resolve(3))
+
+            console.log(console.log)*!/
+
+        console.log(console.log('0'))   // undefined
+        console.log(console.log)        // ƒ log() { [native code] }*/
+/*
+    var p = Promise.resolve([1, 2, 3]);
+    p.then(function (v) {
+        return v[0];     // 1
+    }).then(console.log);
+
+    var original = Promise.resolve(33);
+    var cast = Promise.resolve(original);
+    cast.then(function (value) {
+        console.log('value: ' + value);     // 33
+    });
+    console.log('original === cast ? ' + (original === cast));
+
+    var o = Promise.resolve(1)
+        .then(2)
+
+    console.log('o', o);
+    console.log(Promise.resolve(1));
+    console.log(o === Promise.resolve(1));*/
+
+
+    const wait = ms => new Promise(resolve => {
+        console.log(1)
+        setTimeout(resolve, ms);
+        console.log(ms,'ms' );
+        })
+    ;
+
+    wait(10).then(() => console.log(4));
+    Promise.resolve().then(() => console.log(2)).then(() => console.log(3));
+    console.log(1);
+</script>
+</body>
+</html>

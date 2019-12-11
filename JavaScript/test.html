@@ -8,55 +8,54 @@
 
 
 <script>
+    /*
+        // 函数柯里化
+        function createCurry(func, args) {
+            console.log(func.length)
 
-    function createCurry(func, args) {
-        console.log(func.length)
+        }
 
-    }
+        function check(targetString, reg, o) {
+            return reg.test(targetString);
+        }
 
-    function check(targetString, reg, o) {
-        return reg.test(targetString);
-    }
-
-    // createCurry(check);
+        createCurry(check);
+    */
 
 
     // 重复声明了变量years，整段代码都不会执行
-  /*  console.log(1);      // 不会输出
-    var age = 100;
-    let years = 6;
-    if (age > 12) {
-        let age = 10;
-        var years = age * 3;    //这里的years用var声明，属于全局作用域
-    }
-    console.log(2);      // 不会输出
-    console.log(`${years} years`);  //Uncaught SyntaxError: Identifier 'years' has already been declared
+    /*  console.log(1);      // 不会输出
+      var age = 100;
+      let years = 6;
+      if (age > 12) {
+          let age = 10;
+          var years = age * 3;    //这里的years用var声明，属于全局作用域
+      }
+      console.log(2);      // 不会输出
+      console.log(`${years} years`);  //Uncaught SyntaxError: Identifier 'years' has already been declared
 
-    */
+      */
 
     // let不会在全局对象中新增属性
-/*    let a = 2;
-    var b = 3;
-    console.log(a);     //2
-    console.log(this.a);    //undefined
-    console.log(this.b);    //3
-    console.log(this)       //Window*/
+    /*    let a = 2;
+        var b = 3;
+        console.log(a);     //2
+        console.log(this.a);    //undefined
+        console.log(this.b);    //3
+        console.log(this)       //Window*/
 
-/*
-    function go(n) {
-        // n here is defined!
-        console.log(n);     // Object {a: [1,2,3]}
+    /*
+        function go(n) {
+            // n here is defined!
+            console.log(n);     // Object {a: [1,2,3]}
 
-        for (let n of n.a) {         // ReferenceError
-            console.log(n);
+            for (let n of n.a) {         // ReferenceError
+                console.log(n);
+            }
         }
-    }
 
-    go({a: [1, 2, 3]});
-*/
-
-
-
+        go({a: [1, 2, 3]});
+    */
 
 </script>
 </body>
