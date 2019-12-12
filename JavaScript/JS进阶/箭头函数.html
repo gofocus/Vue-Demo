@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+
+<script>
+
+
+    /*   function Person() {
+           // Person() 构造函数定义 `this`作为它自己的实例.
+           this.age = 0;
+
+           setInterval(function growUp() {
+               // 在非严格模式, growUp()函数定义 `this`作为全局对象,
+               // 与在 Person()构造函数中定义的 `this`并不相同.
+               this.age++;
+           }, 1000);
+       }
+
+       var p = new Person();*/
+
+
+    var f = () => {
+        'use strict';
+        return this;
+    };
+    console.log(f() === window);    //true
+    var f2 = function () {
+        'use strict';
+        return this;
+    };
+    console.log(f2() === window);    //fasle
+    console.log(f2());  // undefined
+
+
+</script>
+</body>
+</html>
