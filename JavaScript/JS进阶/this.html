@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+
+<script>
+    // 'use strict';
+    /*var adder = {
+        base: 1,
+        add: function (a) {
+            console.log(this,1);    // 该函数中this的指向，取决于函数被调用的方式，是独立调用，还是由对象调用
+            var f = v => {
+                console.log(this,2);  // 继承add()中的this
+                return v + this.base;
+            };
+            return f(a);
+        },
+
+        addThruCall: function (a) {
+            var f = v => v + this.base;
+            var b = {
+                base: 2
+            };
+            return f.call(b, a);
+        }
+    };
+
+    console.log(adder.add(1));
+
+    var add2 = adder.add;
+    add2(2);
+    */
+
+    var foo = {
+        bar: function () {
+            console.log(this)
+        }
+    };
+    foo.bar(); // Reference, OK => foo
+    (foo.bar)(); // Reference, OK => foo
+</script>
+</body>
+</html>
