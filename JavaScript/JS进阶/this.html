@@ -35,12 +35,29 @@
     */
 
     var foo = {
+        a: 20,
         bar: function () {
-            console.log(this)
+            console.dir(this)
+            console.log(this.a)
         }
     };
     foo.bar(); // Reference, OK => foo
     (foo.bar)(); // Reference, OK => foo
+    // console.log(foo.bar);
+    // console.dir(foo.bar);
+
+
+    function f2() {
+        var a = 1;
+
+        function f3() {
+            var o = 10;
+        }
+    }
+
+    // console.dir(f2)
+
+
 </script>
 </body>
 </html>
