@@ -5,9 +5,27 @@
     <title>test</title>
 </head>
 <body>
+<a href="javascript:void 0">test</a>
+<a href="javascript:(0)">test2</a>
+<a href="javascript:f();">
+    Click here for green background
+</a>
+<div>............</div>
 
+<button id="test">btn</button>
 
 <script>
+    function f() {
+        return 'www.baidu.com';
+    }
+
+    function testFun(event) {
+        console.log(event);
+    }
+
+    var test = document.getElementById('test');
+    test.addEventListener('click', testFun);
+
     /*
         // 函数柯里化
         function createCurry(func, args) {
