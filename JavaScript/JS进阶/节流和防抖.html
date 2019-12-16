@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节流和防抖</title>
+</head>
+<body>
+
+<input type="text" id="inp">
+
+<script>
+
+    function ajax(...content) {
+        console.log('ajax request', content);
+        console.log(this);
+    }
+
+
+    function debounce(fun, delay) {
+        return function (...args) {
+            clearTimeout(fun.id);
+            // let that = this;
+            fun.id = setTimeout(() => {
+                // fun(args)
+                // fun.call(that, args)
+                fun.call(this, args)
+            }, delay)
+        }
+
+    }
+
+    let input = document.querySelector('input');
+    let debounceAjax = debounce(ajax, 500);
+    input.addEventListener('keyup', (e)=>{
+        console.log(this);
+        debounceAjax.call(input, e.target.value, 'other')
+    });
+    /*  input.addEventListener('keyup', function (e) {
+      debounceAjax(e.target.value, 'other arguments');
+  })*/
+
+    JSON.stringify({a:undefined})
+
+</script>
+</body>
+</html>
